@@ -107,7 +107,7 @@ nav.sc{background:rgba(242,239,232,.95);backdrop-filter:blur(16px);border-bottom
 /* S3 WORK */
 #s3{padding:7rem 3.5rem;}
 .s3-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4rem;}
-.s3-h{font-family:var(--fb);font-size:clamp(2.6rem,5vw,5.5rem);line-height:.9;}
+.s3-h{font-family:var(--fb);font-size:clamp(2.6rem,5vw,5.5rem);line-height:.9;overflow:hidden;}
 .s3-ct{font-family:var(--fm);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;opacity:.26;}
 .pr{display:grid;grid-template-columns:2.2rem 1fr auto;gap:2rem;align-items:center;padding:1.8rem 0;border-bottom:1px solid rgba(10,10,8,.08);cursor:pointer;position:relative;overflow:hidden;transition:padding-left .3s cubic-bezier(.4,0,.2,1);}
 .pr:first-of-type{border-top:1px solid rgba(10,10,8,.08);}
@@ -777,10 +777,10 @@ function S5() {
   return (
     <section id="s5" aria-label="Contact">
       {/* left: headline + links */}
-      <div className="sr">
-        <h2 className="s5-h">Let's talk<br />about<br />something<br />real.</h2>
+      <div>
+        <h2 className="s5-h sr">Let's talk<br />about<br />something<br />real.</h2>
         <p className="s5-sub sr d1">If you're building something, need analysis done, or just want to talk strategy — I'm around. Always interested in work that has actual stakes.</p>
-        <div className="c-links" aria-label="Contact links" role="list">
+        <div className="c-links sr d2" role="list">
           {[["mailto:pathakm3@vcu.edu","Email","→ pathakm3@vcu.edu"],
             ["https://linkedin.com/in/mridul-pathak","LinkedIn","→ mridul-pathak"],
             ["/resume.pdf","Resume","→ Download PDF"],
