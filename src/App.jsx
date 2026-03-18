@@ -176,7 +176,7 @@ nav.sc{background:rgba(242,239,232,.95);backdrop-filter:blur(16px);border-bottom
 .tool.cert{border-color:rgba(192,57,43,.28);color:rgba(192,57,43,.65);}
 
 /* SERVICES — added after skills, still in the single-page flow */
-#s6{padding:7rem 3.5rem;}
+#s6{padding:7rem 3.5rem;position:relative;z-index:1;}
 .s6-h{font-family:var(--fb);font-size:clamp(2.6rem,5vw,5.5rem);line-height:.9;margin-bottom:4rem;}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border:1px solid rgba(10,10,8,.08);margin-bottom:5rem;}
 .svc-card{padding:36px 30px;border-right:1px solid rgba(10,10,8,.08);border-bottom:1px solid rgba(10,10,8,.08);transition:background .25s;cursor:default;}
@@ -190,8 +190,8 @@ nav.sc{background:rgba(242,239,232,.95);backdrop-filter:blur(16px);border-bottom
 .tier-desc{font-family:var(--fm);font-size:.54rem;color:rgba(10,10,8,.42);line-height:1.8;}
 
 /* S5 CONTACT */
-#s5{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-.s5-h{font-family:var(--fb);font-size:clamp(2.8rem,6vw,7rem);line-height:.88;margin-bottom:1.6rem;}
+#s5{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1;}
+.s5-h{font-family:var(--fb);font-size:clamp(2.2rem,5vw,5.5rem);line-height:.88;margin-bottom:1.6rem;word-break:break-word;}
 .s5-sub{font-size:1.05rem;font-weight:300;line-height:1.85;color:rgba(10,10,8,.5);max-width:340px;margin-bottom:2rem;}
 .c-links{display:flex;flex-direction:column;}
 .cl{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;border-bottom:1px solid rgba(10,10,8,.08);text-decoration:none;color:var(--ink);position:relative;overflow:hidden;transition:padding-left .3s;}
@@ -556,7 +556,7 @@ const PROJECTS = [
   { n:"02", name:"Crafteve India — U.S. Market Entry", sub:"Decision analytics consulting · VCU · Nov 2025", tags:[["","Market Analysis"],["","CBA"],["","Sensitivity Analysis"],["","Go-To-Market"]], yr:"Nov 2025",
     body:"Crafteve is an Indian manufacturer of handcrafted wooden gifting décor. They had ₹100,000 to invest and one question: expand in India, or pilot entry into the U.S.?\n\nI ran market, customer, competitor, and comparative analysis — plus a sensitivity analysis modelling tariffs, logistics costs, and demand variance. Recommendation: phased U.S. pilot, with clear KPIs to decide whether to continue or redirect capital.",
     outcome:"Outcome: Client adopted the phased pilot recommendation. KPI framework used to set Q1 2026 review gate.",
-    stats:[["Client","Crafteve India"],["Recommendation","U.S. Pilot"],["Methods","CBA · Sensitivity"],["Course","Decision Analytics · VCU"]], link:"https://drive.google.com/YOUR_CRAFTEVE_LINK", photos:false },
+    stats:[["Client","Crafteve India"],["Recommendation","U.S. Pilot"],["Methods","CBA · Sensitivity"],["Course","Decision Analytics · VCU"]], link:null, photos:false },
   { n:"03", name:"Nightingale Ice Cream — Demand Forecasting", sub:"Real client project · Forecasting Methods · VCU · Nov 2025", tags:[["","Forecasting"],["","R Studio"],["","Seasonality"],["","Sensitivity"]], yr:"Nov 2025",
     body:"A forecasting project for Nightingale Ice Cream, a real Richmond business. Using R Studio, I applied moving averages and exponential smoothing to model sales patterns, seasonality, and quarter-ahead demand.\n\nRan ±5–10% sensitivity scenarios to give the owner a range of realistic outcomes — not just a point estimate that could mislead planning.",
     outcome:"Outcome: Owner used Q1 2026 forecast to adjust inventory and staffing — reducing estimated overstock by ~12%.",
