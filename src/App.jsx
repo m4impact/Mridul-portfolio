@@ -28,8 +28,8 @@ nav.sc{background:rgba(242,239,232,.95);backdrop-filter:blur(16px);border-bottom
 .skip-link{position:absolute;top:-100%;left:1rem;background:var(--ink);color:var(--paper);font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border-radius:2px;text-decoration:none;z-index:99999;}
 .skip-link:focus{top:1rem;}
 *:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px;}
-.sr{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.4,0,.2,1),transform .85s cubic-bezier(.4,0,.2,1);}
-.sr.in{opacity:1;transform:none;}
+.sr{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.4,0,.2,1),transform .85s cubic-bezier(.4,0,.2,1);will-change:opacity,transform;}
+.sr.in{opacity:1;transform:none;will-change:auto;}
 .sr.d1{transition-delay:.1s;}.sr.d2{transition-delay:.2s;}.sr.d3{transition-delay:.3s;}
 .divider{height:3px;background:var(--ink);position:relative;}
 .divider .dl{position:absolute;right:3.5rem;font-family:var(--fm);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;background:var(--paper);padding:0 .8rem;color:var(--ink);opacity:.26;top:50%;transform:translateY(-50%);}
@@ -176,7 +176,7 @@ nav.sc{background:rgba(242,239,232,.95);backdrop-filter:blur(16px);border-bottom
 .tool.cert{border-color:rgba(192,57,43,.28);color:rgba(192,57,43,.65);}
 
 /* SERVICES — added after skills, still in the single-page flow */
-#s6{padding:7rem 3.5rem;position:relative;z-index:1;}
+#s6{padding:7rem 3.5rem;position:relative;z-index:1;isolation:isolate;}
 .s6-h{font-family:var(--fb);font-size:clamp(2.6rem,5vw,5.5rem);line-height:.9;margin-bottom:4rem;}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border:1px solid rgba(10,10,8,.08);margin-bottom:5rem;}
 .svc-card{padding:36px 30px;border-right:1px solid rgba(10,10,8,.08);border-bottom:1px solid rgba(10,10,8,.08);transition:background .25s;cursor:default;}
@@ -190,18 +190,18 @@ nav.sc{background:rgba(242,239,232,.95);backdrop-filter:blur(16px);border-bottom
 .tier-desc{font-family:var(--fm);font-size:.54rem;color:rgba(10,10,8,.42);line-height:1.8;}
 
 /* S5 CONTACT */
-#s5{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1;}
+#s5{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1;isolation:isolate;}
 .s5-h{font-family:var(--fb);font-size:clamp(2.2rem,5vw,5.5rem);line-height:.88;margin-bottom:1.6rem;word-break:break-word;}
 .s5-sub{font-size:1.05rem;font-weight:300;line-height:1.85;color:rgba(10,10,8,.5);max-width:340px;margin-bottom:2rem;}
-.c-links{display:flex;flex-direction:column;}
-.cl{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;border-bottom:1px solid rgba(10,10,8,.08);text-decoration:none;color:var(--ink);position:relative;overflow:hidden;transition:padding-left .3s;}
+.c-links{display:flex;flex-direction:column;isolation:isolate;}
+.cl{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;border-bottom:1px solid rgba(10,10,8,.08);text-decoration:none;color:var(--ink);position:relative;isolation:isolate;transition:padding-left .3s;}
 .cl:first-child{border-top:1px solid rgba(10,10,8,.08);}
-.cl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);transition:width .3s;}
+.cl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);transition:width .3s;z-index:-1;}
 .cl:hover{padding-left:.9rem;}
 .cl:hover::before{width:3px;}
-.cl-n{font-family:var(--fb);font-size:1.6rem;letter-spacing:.02em;transition:color .2s;}
+.cl-n{font-family:var(--fb);font-size:1.6rem;letter-spacing:.02em;transition:color .2s;position:relative;z-index:1;}
 .cl:hover .cl-n{color:var(--red);}
-.cl-a{font-family:var(--fm);font-size:.54rem;letter-spacing:.1em;opacity:.26;transition:opacity .2s,transform .2s;}
+.cl-a{font-family:var(--fm);font-size:.54rem;letter-spacing:.1em;opacity:.26;transition:opacity .2s,transform .2s;position:relative;z-index:1;}
 .cl:hover .cl-a{opacity:.85;transform:translateX(4px);}
 /* contact form */
 .cf{display:flex;flex-direction:column;gap:2rem;}
@@ -780,7 +780,7 @@ function S5() {
       <div className="sr">
         <h2 className="s5-h">Let's talk<br />about<br />something<br />real.</h2>
         <p className="s5-sub sr d1">If you're building something, need analysis done, or just want to talk strategy — I'm around. Always interested in work that has actual stakes.</p>
-        <nav className="c-links" aria-label="Contact links">
+        <div className="c-links" aria-label="Contact links" role="list">
           {[["mailto:pathakm3@vcu.edu","Email","→ pathakm3@vcu.edu"],
             ["https://linkedin.com/in/mridul-pathak","LinkedIn","→ mridul-pathak"],
             ["/resume.pdf","Resume","→ Download PDF"],
@@ -791,7 +791,7 @@ function S5() {
               <span className="cl-a">{arrow}</span>
             </a>
           ))}
-        </nav>
+        </div>
       </div>
 
       {/* right: contact form */}
