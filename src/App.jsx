@@ -228,6 +228,73 @@ footer{background:var(--ink);padding:2rem 3.5rem;display:flex;align-items:center
 .ft-links a{font-family:var(--fm);font-size:.5rem;color:rgba(242,239,232,.28);text-decoration:none;letter-spacing:.08em;transition:color .2s;}
 .ft-links a:hover{color:var(--red);}
 
+/* ── UPES CHAPTER ── */
+.ch-wrap{margin-top:4rem;border-top:1px solid rgba(10,10,8,.08);}
+.ch-trigger{width:100%;background:none;border:none;cursor:pointer;padding:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:2rem;text-align:left;}
+.ch-trigger:hover .ch-hook{color:var(--red);}
+.ch-trigger:hover .ch-arr{color:var(--red);}
+.ch-meta{display:flex;align-items:center;gap:1.2rem;}
+.ch-logo{height:22px;opacity:.55;filter:grayscale(1);}
+.ch-yr{font-family:var(--fm);font-size:.5rem;color:var(--red);letter-spacing:.15em;}
+.ch-hook{font-family:var(--fb);font-size:clamp(1.4rem,3vw,2.2rem);color:var(--ink);line-height:1;transition:color .2s;}
+.ch-sub{font-family:var(--fc);font-style:italic;font-weight:300;font-size:.88rem;color:rgba(10,10,8,.38);margin-top:.3rem;}
+.ch-arr{font-family:var(--fm);font-size:.7rem;color:rgba(10,10,8,.3);flex-shrink:0;transition:color .2s,transform .3s;}
+.ch-arr.open{transform:rotate(45deg);}
+.ch-body{max-height:0;overflow:hidden;transition:max-height .7s cubic-bezier(.4,0,.2,1);}
+.ch-body.open{max-height:6000px;}
+.ch-inner{padding:0 0 4rem;}
+/* cinematic hero image */
+.ch-hero{position:relative;margin-bottom:3rem;overflow:hidden;}
+.ch-hero img{width:100%;height:clamp(320px,55vw,620px);object-fit:cover;object-position:center 20%;display:block;filter:grayscale(8%) sepia(6%);}
+.ch-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.82) 0%,rgba(10,10,8,.18) 55%,transparent 100%);}
+.ch-hero-text{position:absolute;bottom:2.5rem;left:3rem;right:3rem;}
+.ch-hero-eyebrow{font-family:var(--fm);font-size:.5rem;color:var(--red);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem;}
+.ch-hero-title{font-family:var(--fb);font-size:clamp(2rem,5vw,4.5rem);color:var(--paper);line-height:.9;}
+.ch-hero-sub{font-family:var(--fc);font-style:italic;font-weight:300;font-size:clamp(.95rem,1.6vw,1.4rem);color:rgba(242,239,232,.55);margin-top:.6rem;}
+/* narrative */
+.ch-narrative{margin-bottom:3rem;}
+.ch-narrative p{font-size:1.08rem;font-weight:300;line-height:1.88;color:rgba(10,10,8,.6);margin-bottom:1.1rem;max-width:620px;}
+.ch-narrative p strong{font-weight:600;color:var(--ink);font-style:italic;}
+/* three pillars */
+.ch-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(10,10,8,.08);border-bottom:1px solid rgba(10,10,8,.08);margin-bottom:3rem;}
+.ch-pillar{padding:1.8rem 1.4rem;border-right:1px solid rgba(10,10,8,.07);}
+.ch-pillar:last-child{border-right:none;}
+.ch-pl{font-family:var(--fm);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;}
+.ch-pv{font-family:var(--fb);font-size:1.6rem;color:var(--ink);line-height:1;margin-bottom:.5rem;}
+.ch-pb{font-family:var(--fm);font-size:.54rem;color:rgba(10,10,8,.4);line-height:1.8;}
+/* photo grid */
+.ch-game-pair{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;}
+.ch-game-pair img{width:100%;height:320px;object-fit:cover;object-position:center;display:block;filter:grayscale(8%) sepia(5%);}
+.ch-img-single{position:relative;margin-bottom:4px;}
+.ch-img-single img{width:100%;height:260px;object-fit:cover;object-position:center top;display:block;filter:grayscale(10%) sepia(6%);}
+.ch-triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:3rem;}
+.ch-triple>div{position:relative;overflow:hidden;}
+.ch-triple img{width:100%;height:240px;object-fit:cover;object-position:center top;display:block;filter:grayscale(10%) sepia(6%);}
+.ch-photo-cap{position:absolute;bottom:0;left:0;right:0;padding:20px 12px 10px;background:linear-gradient(transparent,rgba(10,10,8,.82));}
+.ch-photo-label{font-family:var(--fm);font-size:.44rem;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px;}
+.ch-photo-sub{font-family:var(--fc);font-style:italic;font-size:.85rem;color:var(--paper);}
+/* cert row */
+.ch-cert{display:grid;grid-template-columns:1fr 260px;gap:3rem;align-items:center;padding:2.5rem 0;border-top:1px solid rgba(10,10,8,.07);margin-bottom:3rem;}
+.ch-cert img{width:100%;display:block;filter:grayscale(10%) sepia(6%);}
+.ch-cert-body{}
+.ch-cert-label{font-family:var(--fm);font-size:.48rem;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem;}
+.ch-cert-title{font-family:var(--fb);font-size:1.8rem;color:var(--ink);line-height:1;margin-bottom:.8rem;}
+.ch-cert-desc{font-family:var(--fm);font-size:.58rem;color:rgba(10,10,8,.45);line-height:1.9;}
+.ch-cert-result{font-family:var(--fm);font-size:.52rem;color:var(--red);letter-spacing:.08em;margin-top:.8rem;border-left:2px solid var(--red);padding-left:.6rem;}
+/* pull quote */
+.ch-quote{padding:3rem 0 1rem;border-top:1px solid rgba(10,10,8,.07);}
+.ch-quote blockquote{font-family:var(--fc);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.5vw,2rem);color:var(--ink);line-height:1.4;max-width:560px;}
+.ch-quote cite{display:block;font-family:var(--fm);font-size:.5rem;color:rgba(10,10,8,.3);letter-spacing:.12em;text-transform:uppercase;margin-top:1rem;font-style:normal;}
+@media(max-width:860px){
+  .ch-pillars{grid-template-columns:1fr;}
+  .ch-pillar{border-right:none;border-bottom:1px solid rgba(10,10,8,.07);}
+  .ch-game-pair{grid-template-columns:1fr;}
+  .ch-game-pair img{height:240px;}
+  .ch-triple{grid-template-columns:1fr 1fr;}
+  .ch-triple img{height:180px;}
+  .ch-cert{grid-template-columns:1fr;}
+  .ch-hero-text{left:1.4rem;right:1.4rem;}
+}
 /* RESPONSIVE */
 @media(max-width:860px){
   .filmstrip{display:none;}
@@ -418,8 +485,138 @@ function S1() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
-// S2 — ABOUT  (sticky sidebar + bio + headshot + timeline + certs + press)
+// UPES CHAPTER — collapsible storytelling block
 // ─────────────────────────────────────────────────────────────────────────
+function UPESChapter() {
+  const [open, setOpen] = useState(false);
+  const toggle = () => setOpen(o => !o);
+  const onKey = e => { if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();} };
+
+  return (
+    <div className="ch-wrap">
+      {/* trigger row */}
+      <button className="ch-trigger" onClick={toggle} onKeyDown={onKey} aria-expanded={open} aria-controls="upes-chapter">
+        <div>
+          <div className="ch-meta">
+            <span className="ch-yr">2024–25</span>
+            <img src="/upes-logo.png" alt="UPES" className="ch-logo" />
+          </div>
+          <div className="ch-hook">Dehradun.<br/>Where curiosity got a structure.</div>
+          <div className="ch-sub">MBA · School of Business · Trident Titans · GEMS Club · Krishi Drone</div>
+        </div>
+        <span className={`ch-arr${open?" open":""}`}>+</span>
+      </button>
+
+      {/* chapter body */}
+      <div className={`ch-body${open?" open":""}`} id="upes-chapter" role="region" aria-label="UPES chapter">
+        <div className="ch-inner">
+
+          {/* ── CINEMATIC HERO ── */}
+          <div className="ch-hero sr">
+            <img src="/upes-hero.jpg" alt="Mridul Pathak — Trident 07 at UPES university basketball" />
+            <div className="ch-hero-overlay" aria-hidden="true"/>
+            <div className="ch-hero-text">
+              <div className="ch-hero-eyebrow">UPES · School of Business · 2024–25</div>
+              <div className="ch-hero-title">The year I stopped<br/>theorising.</div>
+              <div className="ch-hero-sub">Dehradun gave me structure. The court gave me proof.</div>
+            </div>
+          </div>
+
+          {/* ── NARRATIVE ── */}
+          <div className="ch-narrative">
+            <p>Delhi gave me the vocabulary of economics. Rudrapur gave me the reality of business — messy, human, nothing like the textbooks. But standing inside both, I kept running into the same wall: I could see what needed to happen, but I didn't have the framework to make it happen professionally. That gap is what drove me to UPES.</p>
+            <p>The MBA wasn't a credential play. It was a <strong>deliberate repair job.</strong> At UPES I learned how businesses are actually structured — how strategy flows through process, how decisions get made inside organisations, how to walk into a room full of people who speak business fluently and hold your own. I came in curious and undirected. I left knowing how to channel it.</p>
+            <p>The work happened on three fronts simultaneously — and none of them were optional.</p>
+          </div>
+
+          {/* ── THREE PILLARS ── */}
+          <div className="ch-pillars sr">
+            <div className="ch-pillar">
+              <div className="ch-pl">On the court</div>
+              <div className="ch-pv">Trident<br/>Titans</div>
+              <div className="ch-pb">Point guard. School of Business representative. University-level competition. Led the team to victory — coached from the bench when subbed out. Drew the most fouls. Won when it mattered.</div>
+            </div>
+            <div className="ch-pillar">
+              <div className="ch-pl">In the room</div>
+              <div className="ch-pv">2 sponsors<br/>closed</div>
+              <div className="ch-pb">First event after joining GEMS Marketing Club — walked in as Sponsorship & PR. Walked out with two local vendors committed, both in-kind and monetary. No university name doing the work. Just the pitch.</div>
+            </div>
+            <div className="ch-pillar">
+              <div className="ch-pl">At the desk</div>
+              <div className="ch-pv">3.4<br/>GPA</div>
+              <div className="ch-pb">Consistent across strategy, research methods, operations. Treated every project as a real brief — not an assignment. The MBA filled the gaps Rudrapur had exposed.</div>
+            </div>
+          </div>
+
+          {/* ── GAME PHOTOS — cinematic pair ── */}
+          <div className="ch-game-pair sr">
+            <div style={{position:"relative",overflow:"hidden"}}>
+              <img src="/upes-game-2.jpg" alt="Mridul defending on court — UPES Trident Titans university basketball" />
+              <div className="ch-photo-cap">
+                <div className="ch-photo-label">University Games · Defense</div>
+                <div className="ch-photo-sub">Reading the game before the play develops</div>
+              </div>
+            </div>
+            <div style={{position:"relative",overflow:"hidden"}}>
+              <img src="/upes-game-1.jpg" alt="Mridul #10 jersey under basket — UPES university basketball" />
+              <div className="ch-photo-cap">
+                <div className="ch-photo-label">Trident Titans · #10</div>
+                <div className="ch-photo-sub">Under the basket. School of Business on the back.</div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── PRESENTATION + LETTER triple ── */}
+          <div className="ch-triple sr d1" style={{marginTop:"4px"}}>
+            <div>
+              <img src="/upes-present-1.jpg" alt="Mridul presenting at UPES — business research presentation" />
+              <div className="ch-photo-cap">
+                <div className="ch-photo-label">Academic Presentation</div>
+                <div className="ch-photo-sub">Every project treated as a real brief</div>
+              </div>
+            </div>
+            <div>
+              <img src="/upes-present-2.jpg" alt="Team presentation at UPES — Maggi marketing case" />
+              <div className="ch-photo-cap">
+                <div className="ch-photo-label">Collaborative Research</div>
+                <div className="ch-photo-sub">Applied marketing — real brand, real analysis</div>
+              </div>
+            </div>
+            <div>
+              <img src="/upes-letter.jpg" alt="Mridul holding BUZZ Communication Society appointment letter — UPES" />
+              <div className="ch-photo-cap">
+                <div className="ch-photo-label">BUZZ Society · Core Member</div>
+                <div className="ch-photo-sub">Appointment — School of Business, UPES</div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── BUDGET COMPETITION CERT ── */}
+          <div className="ch-cert sr">
+            <div className="ch-cert-body">
+              <div className="ch-cert-label">Budget Formulation Tournament · UPES</div>
+              <div className="ch-cert-title">Second.<br/>Out of everyone.</div>
+              <p className="ch-cert-desc">Before the official Union Budget was announced, teams were given the same data the government had and asked to formulate India's national budget. The team whose projection came closest to the actual budget won. We came second — close enough to matter, far enough to still be thinking about what we'd change.</p>
+              <div className="ch-cert-result">// Runner-up · National Budget Formulation Competition · UPES 2025</div>
+            </div>
+            <img src="/upes-cert.jpg" alt="Certificate of Appreciation — Budget Formulation Tournament, UPES School of Business" />
+          </div>
+
+          {/* ── PULL QUOTE ── */}
+          <div className="ch-quote sr d2">
+            <blockquote>
+              "The court was the only place it was entirely, undeniably mine. No institution's name helping. No collaborator to share the credit. Just people believing in the vision."
+            </blockquote>
+            <cite>— On representing School of Business at UPES University Games</cite>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function S2() {
   return (
     <section id="s2" aria-label="About">
@@ -485,7 +682,7 @@ function S2() {
             <div className="tl">
               {[{yr:"2018–21",place:"Delhi",note:"BA Economics · University of Delhi · Markets are just people making decisions under uncertainty."},
                 {yr:"2022–23",place:"Rudrapur",note:"Marketing Intern · Industrial supply sector · Learned that data without context is just noise."},
-                {yr:"2024–25",place:"Dehradun",note:"MBA · UPES · Founded Uttarakhand Hoops Fest. Built it from nothing. 1,000+ people showed up."},
+                {yr:"2024–25",place:"Dehradun",note:"MBA · UPES · School of Business · Trident Titans · Krishi Drone Incubator · Budget Competition Runner-up. The year everything clicked. ↓ Full chapter below."},
                 {yr:"Aug 2025–",place:"Richmond, VA",note:"MS Decision Analytics · VCU · Marketing Concentration · Building the quantitative foundation to match the intuitions earned in the field. Graduating Dec 2026."},
               ].map((t, i) => (
                 <div key={i} className="tl-row sr" style={{transitionDelay:`${i*.1}s`}}>
@@ -496,6 +693,9 @@ function S2() {
               ))}
             </div>
           </div>
+
+          {/* ── UPES CHAPTER ── */}
+          <UPESChapter />
 
           {/* certifications */}
           <div style={{marginBottom:"4rem"}}>
