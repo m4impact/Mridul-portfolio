@@ -1550,3 +1550,28 @@ nav.scrolled .nav-links button {
   .comm-projects-scroll-wrap { margin: 0 -1.4rem; }
   .comm-projects-scroll { padding: 0 1.4rem; }
 }
+
+/* blog horizontal scroll */
+.comm-blog-scroll {
+  display: flex;
+  gap: 1px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 3.5rem 2rem;
+  background: rgba(10,10,8,0.04);
+  cursor: grab;
+}
+.comm-blog-scroll:active { cursor: grabbing; }
+.comm-blog-scroll::-webkit-scrollbar { display: none; }
+.comm-blog-scroll .comm-blog {
+  min-width: 380px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .comm-blog-scroll { padding: 0 1.4rem 2rem; }
+  .comm-blog-scroll .comm-blog { min-width: 300px; }
+  .disciplines-grid { grid-template-columns: 1fr; }
+}

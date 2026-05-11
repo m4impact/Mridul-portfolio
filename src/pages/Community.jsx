@@ -75,7 +75,63 @@ const allProjects = [
 
 const filters = ["all", "analytics", "strategy", "product", "community"];
 
-function HorizontalScroll({ filtered }) {
+function BlogScroll({ blogs }) {
+  const scrollRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
+    scrollRef.current.style.cursor = "grabbing";
+  };
+  const onMouseUp = () => { isDragging.current = false; if (scrollRef.current) scrollRef.current.style.cursor = "grab"; };
+  const onMouseMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    scrollRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.5;
+  };
+
+  return (
+    <div style={{ position: "relative" }}>
+      <div style={{ display: "flex", justifyContent: "flex-end", padding: "0 3.5rem", marginBottom: "0.8rem", gap: "0.5rem", alignItems: "center" }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(10,10,8,0.25)" }}>Drag to read</span>
+        <button className="comm-scroll-hint__btn" onClick={() => scrollRef.current?.scrollBy({ left: -400, behavior: "smooth" })}>←</button>
+        <button className="comm-scroll-hint__btn" onClick={() => scrollRef.current?.scrollBy({ left: 400, behavior: "smooth" })}>→</button>
+      </div>
+      <div
+        ref={scrollRef}
+        className="comm-blog-scroll"
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
+        onMouseMove={onMouseMove}
+      >
+        {blogs.map((b) => (
+          <Link
+            key={b.to}
+            to={b.to}
+            className="comm-blog"
+            onClick={(e) => { if (isDragging.current) e.preventDefault(); }}
+          >
+            <div className="comm-blog__img" style={{ background: b.imgBg }}>
+              {b.img && <img src={b.img} alt={b.title} style={{ width: "100%", height: "100%", display: "block", ...b.imgStyle }} />}
+            </div>
+            <div className="comm-blog__body">
+              <span className="comm-blog__label">{b.label}</span>
+              <span className="comm-blog__title">{b.title}</span>
+              <p className="comm-blog__excerpt">{b.excerpt}</p>
+              <span className="comm-blog__cta">Read the story →</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
   const scrollRef = useRef(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
@@ -160,27 +216,7 @@ export default function Community() {
         <Fade>
           <div className="section-label" style={{ marginBottom: "1.5rem" }}>// Three stories worth reading</div>
         </Fade>
-        <div className="comm-blogs">
-          {blogs.map((b, i) => (
-            <Fade key={b.to} delay={i * 100}>
-              <Link to={b.to} className="comm-blog">
-                <div className="comm-blog__img" style={{ background: b.imgBg }}>
-                  {b.img ? (
-                    <img src={b.img} alt={b.title} style={{ ...b.imgStyle }} />
-                  ) : (
-                    <div className="comm-blog__img-placeholder" />
-                  )}
-                </div>
-                <div className="comm-blog__body">
-                  <span className="comm-blog__label">{b.label}</span>
-                  <span className="comm-blog__title">{b.title}</span>
-                  <p className="comm-blog__excerpt">{b.excerpt}</p>
-                  <span className="comm-blog__cta">Read the story →</span>
-                </div>
-              </Link>
-            </Fade>
-          ))}
-        </div>
+        <BlogScroll blogs={blogs} />
       </section>
 
       <div className="comm-rule" />
