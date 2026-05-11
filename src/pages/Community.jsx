@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 function useFadeIn() {
@@ -17,7 +18,7 @@ function useFadeIn() {
 function Fade({ children, delay = 0, className = "" }) {
   const [ref, visible] = useFadeIn();
   return (
-    <div ref={ref} className={`comm-fade${visible?" comm-fade--in":""} ${className}`} style={{transitionDelay:`${delay}ms`}}>
+    <div ref={ref} className={`comm-fade${visible ? " comm-fade--in" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </div>
   );
@@ -26,17 +27,42 @@ function Fade({ children, delay = 0, className = "" }) {
 function Credit({ value, label }) {
   const [ref, visible] = useFadeIn();
   return (
-    <div ref={ref} className={`comm-credit${visible?" comm-fade--in":""}`}>
+    <div ref={ref} className={`comm-credit${visible ? " comm-fade--in" : ""}`}>
       <span className="comm-credit__value">{value}</span>
       <span className="comm-credit__label">{label}</span>
     </div>
   );
 }
 
+const teasers = [
+  {
+    to: "/work/hoops",
+    label: "Sports · Community · 2024",
+    title: "Uttarakhand Hoops Fest",
+    body: "1,000 people. 7 sponsors. Indian Air Force teams. A 3-day tournament built from nothing in Kashipur — before anyone said it could exist.",
+  },
+  {
+    to: "/work/krishi",
+    label: "Agri-Tech · Startup · 2024",
+    title: "Krishi Drone",
+    body: "Precision farming for smallholder farmers who couldn't afford enterprise tech. UPES incubator accepted. Prototype initiated.",
+  },
+  {
+    to: "/work/mat",
+    label: "Platform · In Development · 2026",
+    title: "MAT — My Ambition Tool",
+    body: "A free market intelligence platform built for founders who can't afford to get the analysis wrong. Not a class project.",
+  },
+  {
+    to: "/work/crafteve",
+    label: "Market Entry · Consulting · 2025",
+    title: "Crafteve India",
+    body: "U.S. market entry strategy for an Indian manufacturer. Recommendation adopted. KPI framework set the Q1 2026 review gate.",
+  },
+];
+
 export default function Community() {
-  useEffect(() => {
-    document.title = "Community — Mridul Pathak";
-  }, []);
+  useEffect(() => { document.title = "Community — Mridul Pathak"; }, []);
 
   return (
     <div className="comm">
@@ -161,33 +187,24 @@ export default function Community() {
 
       <div className="comm-rule" />
 
-      {/* RICHMOND */}
+      {/* PROJECT TEASERS */}
       <section className="comm-section">
-        <div className="comm-richmond-grid">
-          <div className="comm-richmond-img">
-            <Fade className="comm-photo comm-photo--portrait">
-              <img src="/mridul-headshot.jpg" alt="Mridul Pathak — Richmond, VA" />
+        <Fade><div className="comm-location" style={{ fontSize: "clamp(2rem,4vw,4rem)", marginBottom: "1rem" }}>The work,<br />in full.</div></Fade>
+        <Fade className="comm-body" delay={100}>
+          <p>Each of these started with a gap. Click through for the full picture — including downloadable reports where available.</p>
+        </Fade>
+        <div className="comm-teasers">
+          {teasers.map((t, i) => (
+            <Fade key={t.to} delay={i * 80}>
+              <Link to={t.to} className="comm-teaser">
+                <span className="comm-teaser__label">{t.label}</span>
+                <span className="comm-teaser__title">{t.title}</span>
+                <span className="comm-teaser__body">{t.body}</span>
+                <span className="comm-teaser__cta">Read more →</span>
+              </Link>
             </Fade>
-          </div>
-          <div>
-            <Fade><div className="comm-location">Richmond.</div></Fade>
-            <Fade className="comm-body">
-              <p>Richmond is a city that rewards you for showing up ready.</p>
-              <p>What it doesn't always build is the room where people who are in-between can actually sit down together. In-between cultures. In-between credentials. In-between where they came from and where they are going.</p>
-            </Fade>
-          </div>
+          ))}
         </div>
-
-        <Fade className="comm-pullquote comm-pullquote--center">
-          <blockquote>Ambition and loneliness occupy the same square footage more often than anyone says out loud.</blockquote>
-        </Fade>
-
-        <Fade className="comm-body">
-          <p>I know that feeling from the inside. What I started building here isn't a program. It doesn't have a name. It's closer to an intention — that the people doing serious work, who need one real conversation more than they need another event to attend, should be able to find each other without having to explain themselves first.</p>
-        </Fade>
-        <Fade className="comm-body comm-body--italic">
-          <p>No membership. No pitch at the door. Just: come as you are, bring something worth talking about, and be ready for the conversation to go somewhere real.</p>
-        </Fade>
       </section>
 
       {/* CLOSE */}

@@ -12,6 +12,10 @@ import SkillsPage from "./pages/SkillsPage";
 import ServicesPage from "./pages/ServicesPage";
 import ContactPage from "./pages/ContactPage";
 import Community from "./pages/Community";
+import HoopsPage from "./pages/projects/HoopsPage";
+import KrishiPage from "./pages/projects/KrishiPage";
+import MATPage from "./pages/projects/MATPage";
+import CraftevePage from "./pages/projects/CraftevePage";
 
 function ScrollReset() {
   const { pathname } = useLocation();
@@ -30,6 +34,10 @@ export default function App() {
         <Route path="/" element={<HeroPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/work" element={<WorkPage />} />
+        <Route path="/work/hoops" element={<HoopsPage />} />
+        <Route path="/work/krishi" element={<KrishiPage />} />
+        <Route path="/work/mat" element={<MATPage />} />
+        <Route path="/work/crafteve" element={<CraftevePage />} />
         <Route path="/skills" element={<SkillsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />

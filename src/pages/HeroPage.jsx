@@ -7,15 +7,19 @@ const TAGLINES = [
   "Every decision\nleaves a signal.",
 ];
 
+const NAV_CARDS = [
+  { to: "/about", label: "About", sub: "The story behind the work" },
+  { to: "/work", label: "Work", sub: "5 projects, real outcomes" },
+  { to: "/community", label: "Community", sub: "Beyond the brief" },
+];
+
 export default function HeroPage() {
   const [idx, setIdx] = useState(0);
   const [fading, setFading] = useState(false);
   const [lines, setLines] = useState([]);
   const [tc, setTc] = useState("00:00:00:00");
 
-  useEffect(() => {
-    document.title = "Mridul Pathak — Decision Analytics & Product Strategy";
-  }, []);
+  useEffect(() => { document.title = "Mridul Pathak — Decision Analytics & Product Strategy"; }, []);
 
   useEffect(() => {
     const build = () => setLines(Array.from({ length: Math.ceil(window.innerHeight / 50) + 2 }, (_, i) => i * 50));
@@ -50,6 +54,7 @@ export default function HeroPage() {
       </div>
       <div className="letterbox top" aria-hidden="true" />
       <div className="letterbox bottom" aria-hidden="true" />
+
       <div className="hero-content">
         <div className="hero-eyebrow">// 001 &nbsp;·&nbsp; Richmond, VA &nbsp;·&nbsp; VCU MDA '26</div>
         <h1 className="hero-name">Mridul<br />Pathak</h1>
@@ -60,22 +65,30 @@ export default function HeroPage() {
           ))}
           <span className="hero-tag highlight">Joining TMF as PM · May 2026</span>
         </div>
-        <div style={{ marginTop: "2.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <Link to="/about" style={{ fontFamily: "var(--font-mono)", fontSize: ".54rem", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--ink)", textDecoration: "none", border: "1px solid rgba(10,10,8,.22)", padding: ".5rem 1.1rem", borderRadius: "2px", transition: "background .2s, color .2s" }}
-            onMouseEnter={e => { e.target.style.background = "var(--ink)"; e.target.style.color = "var(--paper)"; }}
-            onMouseLeave={e => { e.target.style.background = ""; e.target.style.color = "var(--ink)"; }}
-          >About →</Link>
-          <Link to="/work" style={{ fontFamily: "var(--font-mono)", fontSize: ".54rem", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--red)", textDecoration: "none", border: "1px solid rgba(192,57,43,.35)", padding: ".5rem 1.1rem", borderRadius: "2px", transition: "background .2s, color .2s" }}
-            onMouseEnter={e => { e.target.style.background = "var(--red)"; e.target.style.color = "var(--paper)"; }}
-            onMouseLeave={e => { e.target.style.background = ""; e.target.style.color = "var(--red)"; }}
-          >See Work →</Link>
+
+        {/* Accessible nav cards */}
+        <div className="hero-nav-cards">
+          {NAV_CARDS.map(({ to, label, sub }) => (
+            <Link key={to} to={to} className="hero-nav-card">
+              <span className="hero-nav-card__label">{label}</span>
+              <span className="hero-nav-card__sub">{sub}</span>
+              <span className="hero-nav-card__arrow">→</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="hero-bottom-links">
+          <Link to="/skills" className="hero-text-link">Skills</Link>
+          <span className="hero-text-link-dot">·</span>
+          <Link to="/services" className="hero-text-link">Services</Link>
+          <span className="hero-text-link-dot">·</span>
+          <Link to="/contact" className="hero-text-link">Contact</Link>
+          <span className="hero-text-link-dot">·</span>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hero-text-link" style={{ color: "var(--red)" }}>Résumé ↓</a>
         </div>
       </div>
+
       <div className="timecode" aria-hidden="true">{tc}</div>
-      <div className="scroll-cue" aria-hidden="true">
-        <div className="scroll-arrow" />
-        Navigate above
-      </div>
     </div>
   );
 }
