@@ -75,6 +75,55 @@ const allProjects = [
 
 const filters = ["all", "analytics", "strategy", "product", "community"];
 
+function HorizontalScroll({ filtered }) {
+  const scrollRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
+    scrollRef.current.style.cursor = "grabbing";
+  };
+  const onMouseUp = () => { isDragging.current = false; scrollRef.current.style.cursor = "grab"; };
+  const onMouseMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  return (
+    <div
+      id="proj-scroll"
+      ref={scrollRef}
+      className="comm-projects-scroll"
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      onMouseMove={onMouseMove}
+    >
+      {filtered.map((p) => (
+        <Link key={p.id} to={p.route} className="comm-project-card"
+          onClick={(e) => { if (isDragging.current) e.preventDefault(); }}>
+          <span className="comm-project-card__category">{p.category}</span>
+          <span className="comm-project-card__name">{p.name}</span>
+          <p className="comm-project-card__brief">{p.brief}</p>
+          <div className="comm-project-card__meta">
+            <span className="comm-project-card__year">{p.year}</span>
+            <span className="comm-project-card__cta">
+              {p.report ? "Report available →" : "View project →"}
+            </span>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function Community() {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -213,41 +262,37 @@ export default function Community() {
 
       <div className="comm-rule" />
 
-      {/* FILTERED PROJECTS */}
-      <section className="comm-section" style={{ maxWidth: "1100px" }}>
-        <Fade>
-          <div className="section-label" style={{ marginBottom: "1.5rem" }}>// All work — filter by discipline</div>
-        </Fade>
-        <Fade delay={100}>
-          <div className="comm-filter-bar">
-            {filters.map(f => (
-              <button
-                key={f}
-                className={`comm-filter-btn${activeFilter === f ? " active" : ""}`}
-                onClick={() => setActiveFilter(f)}
-              >
-                {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)}
-              </button>
-            ))}
-          </div>
-        </Fade>
-        <div className="comm-projects-grid">
-          {filtered.map((p, i) => (
-            <Fade key={p.id} delay={i * 60}>
-              <Link to={p.route} className="comm-project-card">
-                <span className="comm-project-card__category">{p.category}</span>
-                <span className="comm-project-card__name">{p.name}</span>
-                <p className="comm-project-card__brief">{p.brief}</p>
-                <div className="comm-project-card__meta">
-                  <span className="comm-project-card__year">{p.year}</span>
-                  <span className="comm-project-card__cta">
-                    {p.report ? "Report available →" : "View project →"}
-                  </span>
+      {/* FILTERED PROJECTS — horizontal scroll */}
+      <section className="comm-section" style={{ maxWidth: "none", paddingLeft: 0, paddingRight: 0 }}>
+        <div style={{ padding: "0 3.5rem" }}>
+          <Fade>
+            <div className="section-label" style={{ marginBottom: "1.2rem" }}>// All work — filter by discipline</div>
+          </Fade>
+          <Fade delay={100}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem", flexWrap: "wrap", gap: "0.8rem" }}>
+              <div className="comm-filter-bar" style={{ marginBottom: 0 }}>
+                {filters.map(f => (
+                  <button
+                    key={f}
+                    className={`comm-filter-btn${activeFilter === f ? " active" : ""}`}
+                    onClick={() => setActiveFilter(f)}
+                  >
+                    {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)}
+                  </button>
+                ))}
+              </div>
+              <div className="comm-scroll-hint">
+                <span>Drag to scroll</span>
+                <div className="comm-scroll-hint__arrows">
+                  <button className="comm-scroll-hint__btn" onClick={() => document.getElementById("proj-scroll").scrollBy({ left: -320, behavior: "smooth" })}>←</button>
+                  <button className="comm-scroll-hint__btn" onClick={() => document.getElementById("proj-scroll").scrollBy({ left: 320, behavior: "smooth" })}>→</button>
                 </div>
-              </Link>
-            </Fade>
-          ))}
+              </div>
+            </div>
+          </Fade>
         </div>
+
+        <HorizontalScroll filtered={filtered} />
       </section>
 
       {/* CLOSE */}

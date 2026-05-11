@@ -1,12 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import { useScrollReveal } from "../components/useScrollReveal";
 import Footer from "../components/Footer";
 
+// EmailJS config — you need to set these up at emailjs.com (free)
+// Replace with your actual IDs after signing up
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || "YOUR_PUBLIC_KEY";
+
 const contactLinks = [
-  ["mailto:pathakm3@vcu.edu",          "Email",    "→ pathakm3@vcu.edu"],
+  ["mailto:pathakm3@vcu.edu",           "Email",    "→ pathakm3@vcu.edu"],
   ["https://linkedin.com/in/mridul-pathak", "LinkedIn", "→ mridul-pathak"],
-  ["/resume.pdf",                       "Resume",   "→ Download PDF"],
-  ["https://github.com/m4impact",       "GitHub",   "→ m4impact"],
+  ["/resume.pdf",                        "Resume",   "→ Download PDF"],
+  ["https://github.com/m4impact",        "GitHub",   "→ m4impact"],
 ];
 
 export default function ContactPage() {
@@ -17,10 +24,11 @@ export default function ContactPage() {
   }, []);
   useScrollReveal();
 
+  const formRef = useRef(null);
   const [fields, setFields] = useState({ name: "", email: "", message: "" });
   const [focused, setFocused] = useState("");
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const validate = () => {
     const e = {};
@@ -29,6 +37,21 @@ export default function ContactPage() {
     if (!fields.message.trim()) e.message = "Required";
     setErrors(e);
     return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setStatus("sending");
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY);
+      setStatus("sent");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      // Fallback — open mailto if EmailJS not configured yet
+      window.location.href = `mailto:pathakm3@vcu.edu?subject=Message from ${fields.name}&body=${encodeURIComponent(fields.message)}`;
+      setStatus("sent");
+    }
   };
 
   const inputStyle = f => ({
@@ -52,12 +75,11 @@ export default function ContactPage() {
         <div>
           <h2 className="contact-heading reveal">Let's talk<br />about<br />something<br />real.</h2>
           <p className="contact-sub reveal d1">
-            You have an idea that deserves to exist. You're in a market you can't read clearly. You built something and you're not sure what went wrong. You just want to talk to someone who will actually engage with what you're working on.
+            You have an idea that deserves to exist. You're in a market you can't read clearly. You built something and you're not sure what went wrong. You just want to talk to someone who will actually engage.
           </p>
           <p className="contact-sub reveal d2" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", color: "rgba(10,10,8,0.4)", fontSize: "1rem" }}>
             That's what I'm here for.
           </p>
-
           <div className="contact-links reveal d2">
             {contactLinks.map(([href, name, arrow]) => (
               <a key={name} className="contact-link" href={href}
@@ -68,44 +90,48 @@ export default function ContactPage() {
               </a>
             ))}
           </div>
-
           <div className="contact-note reveal d3">
             <span>// Response time: usually same day. Always honest.</span>
           </div>
         </div>
 
         <div className="reveal d1">
-          {sent ? (
+          {status === "sent" ? (
             <div className="form-success" role="status">
               <div className="success-tick">✓</div>
               <div className="success-msg">Message sent. I'll be in touch shortly.</div>
             </div>
           ) : (
-            <form className="contact-form" onSubmit={e => { e.preventDefault(); if (validate()) setSent(true); }} noValidate>
+            <form ref={formRef} className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="form-context">
                 <p>Send a message. Tell me what you're working on. I read every one.</p>
               </div>
-              {["name", "email", "message"].map(f => (
-                <div key={f}>
-                  <label htmlFor={`cf-${f}`} className={`form-label${focused === f ? " focused" : ""}${errors[f] ? " error" : ""}`}>
-                    {f}{errors[f] && <span style={{ fontStyle: "italic", marginLeft: "6px" }}>{errors[f]}</span>}
+              {[
+                { key: "name",    type: "text",  placeholder: "Your name" },
+                { key: "email",   type: "email", placeholder: "Your email" },
+                { key: "message", type: "area",  placeholder: "What are you working on?" },
+              ].map(({ key, type, placeholder }) => (
+                <div key={key}>
+                  <label htmlFor={`cf-${key}`} className={`form-label${focused === key ? " focused" : ""}${errors[key] ? " error" : ""}`}>
+                    {key}{errors[key] && <span style={{ fontStyle: "italic", marginLeft: "6px" }}>{errors[key]}</span>}
                   </label>
-                  {f === "message"
-                    ? <textarea id={`cf-${f}`} rows={5} value={fields[f]}
-                        onChange={e => setFields(p => ({ ...p, [f]: e.target.value }))}
-                        onFocus={() => setFocused(f)} onBlur={() => setFocused("")}
-                        style={{ ...inputStyle(f), resize: "none", lineHeight: 1.8 }}
-                        className="form-input" aria-required="true"
-                        placeholder="What are you working on?" />
-                    : <input id={`cf-${f}`} type={f === "email" ? "email" : "text"} value={fields[f]}
-                        onChange={e => setFields(p => ({ ...p, [f]: e.target.value }))}
-                        onFocus={() => setFocused(f)} onBlur={() => setFocused("")}
-                        style={inputStyle(f)} className="form-input" aria-required="true" />}
+                  {type === "area"
+                    ? <textarea id={`cf-${key}`} name={key} rows={5} value={fields[key]}
+                        onChange={e => setFields(p => ({ ...p, [key]: e.target.value }))}
+                        onFocus={() => setFocused(key)} onBlur={() => setFocused("")}
+                        style={{ ...inputStyle(key), resize: "none", lineHeight: 1.8 }}
+                        className="form-input" aria-required="true" placeholder={placeholder} />
+                    : <input id={`cf-${key}`} name={key} type={type} value={fields[key]}
+                        onChange={e => setFields(p => ({ ...p, [key]: e.target.value }))}
+                        onFocus={() => setFocused(key)} onBlur={() => setFocused("")}
+                        style={inputStyle(key)} className="form-input" aria-required="true" placeholder={placeholder} />}
                 </div>
               ))}
-              <button type="submit" className="form-submit">Send Message →</button>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: ".48rem", color: "rgba(10,10,8,.28)", letterSpacing: ".08em", marginTop: "1rem", lineHeight: 1.8 }}>
-                // I read every message. I respond to all of them. I don't forward your details anywhere. This is just two people talking.
+              <button type="submit" className="form-submit" disabled={status === "sending"}>
+                {status === "sending" ? "Sending..." : "Send Message →"}
+              </button>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: ".46rem", color: "rgba(10,10,8,.25)", letterSpacing: ".08em", marginTop: "1rem", lineHeight: 1.9 }}>
+                // I read every message. I respond to all of them. This is just two people talking.
               </p>
             </form>
           )}
