@@ -23,20 +23,7 @@ const certList = [
   { name: "CAPM — Certified Associate in Project Management", org: "PMI", date: "In Progress" },
 ];
 
-const howIWork = [
-  {
-    trigger: "If you have an idea →",
-    body: "Tell me what you're building. I'll help you figure out if the market is real, what the risks are, and how to structure the thinking so you can move forward clearly — whether or not you work with me again.",
-  },
-  {
-    trigger: "If you have a problem →",
-    body: "Something went wrong or isn't working. Walk me through it. I'll help you understand what the data says — not just the answer, but why, so you know what to do next time without needing me.",
-  },
-  {
-    trigger: "If you have an opportunity →",
-    body: "A market you want to enter. A decision you need to make. A situation you need to read. I'll run the analysis and translate it into something you can actually act on.",
-  },
-];
+
 
 function UPESChapter() {
   const [open, setOpen] = useState(false);
@@ -182,21 +169,13 @@ export default function AboutPage() {
 
           <a className="resume-btn reveal d2" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
 
-          {/* How I work section */}
-          <div className="how-i-work reveal" style={{ marginTop: "4rem" }}>
-            <div className="section-label">// How I work with people</div>
-            <div className="hiw-grid">
-              {howIWork.map(({ trigger, body }) => (
-                <div key={trigger} className="hiw-item">
-                  <div className="hiw-trigger">{trigger}</div>
-                  <p className="hiw-body">{body}</p>
-                </div>
-              ))}
-            </div>
-            <div className="hiw-footer">
-              <p>The conversation is always free. The clarity is the point.</p>
-              <Link to="/contact" className="hiw-cta">→ Start a conversation</Link>
-            </div>
+          {/* Subtle CTA — no explanation, just an open door */}
+          <div className="about-open-door reveal" style={{ marginTop: "3rem" }}>
+            <Link to="/contact" className="about-open-door__link">
+              <span className="about-open-door__label">// Open to conversations</span>
+              <span className="about-open-door__text">Ideas · Problems · Opportunities · Questions</span>
+              <span className="about-open-door__arrow">→</span>
+            </Link>
           </div>
 
           {/* Bio */}

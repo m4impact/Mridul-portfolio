@@ -17,6 +17,10 @@ import KrishiPage from "./pages/projects/KrishiPage";
 import MATPage from "./pages/projects/MATPage";
 import CraftevePage from "./pages/projects/CraftevePage";
 import NightingalePage from "./pages/projects/NightingalePage";
+import PFGPage from "./pages/projects/PFGPage";
+import HoopsBlog from "./pages/blog/HoopsBlog";
+import MATBlog from "./pages/blog/MATBlog";
+import KrishiBlog from "./pages/blog/KrishiBlog";
 
 function ScrollReset() {
   const { pathname } = useLocation();
@@ -40,10 +44,14 @@ export default function App() {
         <Route path="/work/mat" element={<MATPage />} />
         <Route path="/work/crafteve" element={<CraftevePage />} />
         <Route path="/work/nightingale" element={<NightingalePage />} />
+        <Route path="/work/pfg" element={<PFGPage />} />
         <Route path="/skills" element={<SkillsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/community/hoops" element={<HoopsBlog />} />
+        <Route path="/community/mat" element={<MATBlog />} />
+        <Route path="/community/krishi" element={<KrishiBlog />} />
         <Route path="*" element={<HeroPage />} />
       </Routes>
     </BrowserRouter>

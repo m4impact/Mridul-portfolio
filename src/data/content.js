@@ -67,3 +67,16 @@ export const tiers = [
   { name: "Pro",     desc: "For growing businesses with defined research or analytics needs — ongoing or one-off." },
   { name: "Expert",  desc: "For established teams requiring depth, multiple deliverables, or someone to think alongside them." },
 ];
+
+export const pfgProject = {
+  num: "06",
+  name: "PFG Group — Supply Chain Optimization",
+  sub: "Optimization & simulation model · VCU · Nov 2025",
+  tags: [["","Operations"],["","Optimization"],["","Simulation"]],
+  year: "Nov 2025",
+  body: "Built an optimization and simulation model for a real logistics operation, improving freezer utilization from 40% to 92% and supporting data-driven decisions on capacity planning.",
+  outcome: "Freezer utilization: 40% → 92%.",
+  stats: [["Before","40% utilization"],["After","92% utilization"],["Method","Optimization · Simulation"],["Course","VCU · Operations"]],
+  link: null,
+  hasPhotos: false,
+};
