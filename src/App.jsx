@@ -2,9 +2,15 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import "./styles/global.css";
 import "./styles/community.css";
-import Nav from "./components/Nav";
 import Cursor from "./components/Cursor";
-import Home from "./pages/Home";
+import Filmstrip from "./components/Filmstrip";
+import Nav from "./components/Nav";
+import HeroPage from "./pages/HeroPage";
+import AboutPage from "./pages/AboutPage";
+import WorkPage from "./pages/WorkPage";
+import SkillsPage from "./pages/SkillsPage";
+import ServicesPage from "./pages/ServicesPage";
+import ContactPage from "./pages/ContactPage";
 import Community from "./pages/Community";
 
 function ScrollReset() {
@@ -18,11 +24,17 @@ export default function App() {
     <BrowserRouter>
       <ScrollReset />
       <Cursor />
+      <Filmstrip />
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HeroPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/work" element={<WorkPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/community" element={<Community />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<HeroPage />} />
       </Routes>
     </BrowserRouter>
   );
