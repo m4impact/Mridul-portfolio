@@ -1,7 +1,16 @@
-import { useState, useCallback, useEffect } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "../components/useScrollReveal";
 import Footer from "../components/Footer";
 import { projects } from "../data/content";
+
+const projectImages = {
+  "01": { src: "/mat-logo.png",        style: { objectFit: "contain", background: "#0A0A08", padding: "2rem" } },
+  "02": { src: "/crafteve-cover.png",  style: { objectFit: "cover", objectPosition: "center top" } },
+  "03": { src: "/nightingale-logo.png",style: { objectFit: "contain", background: "#f5efe4", padding: "2rem" } },
+  "04": { src: "/krishi-logo.png",     style: { objectFit: "contain", background: "#fff", padding: "2rem" } },
+  "05": { src: "/hoops-champions.jpg", style: { objectFit: "cover", objectPosition: "center top" } },
+};
 
 const hooks = {
   "01": "Because the founders who need market clarity the most are the ones who can least afford to pay for it.",
@@ -11,58 +20,19 @@ const hooks = {
   "05": "Because 1,000 people in those stands saw someone from their city decide it was worth doing — and that changes what people believe is possible.",
 };
 
-function ProjectRow({ p }) {
-  const [open, setOpen] = useState(false);
-  const toggle = useCallback(() => setOpen(o => !o), []);
-  return (
-    <div>
-      <div className="project-row reveal" role="button" tabIndex={0} aria-expanded={open}
-        onClick={toggle}
-        onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } }}>
-        <span className="project-num" aria-hidden="true">{p.num}</span>
-        <div>
-          <div className="project-name">{p.name}</div>
-          <div className="project-sub">{p.sub}</div>
-          <div className="project-tags">{p.tags.map(([cls, t], i) => <span key={i} className={`project-tag${cls ? " " + cls : ""}`}>{t}</span>)}</div>
-        </div>
-        <div className="project-meta" aria-hidden="true">
-          <span className="project-year">{p.year}</span>
-          <div className="project-expand">{open ? "Collapse ↑" : "Expand →"}</div>
-        </div>
-      </div>
-      <div className={`project-detail${open ? " open" : ""}`}>
-        <div className="project-detail-inner">
-          <div className="project-body">
-            {/* human hook */}
-            <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300, fontSize: "1.1rem", color: "rgba(10,10,8,0.55)", marginBottom: "1.2rem", borderLeft: "2px solid var(--red)", paddingLeft: "0.8rem" }}>
-              {hooks[p.num]}
-            </p>
-            {p.body.split("\n\n").map((para, i) => <p key={i} style={{ marginBottom: "1rem" }}>{para}</p>)}
-            <span className="project-outcome">{p.outcome}</span>
-            {p.note && <span className="project-note" style={{ display: "block", marginTop: "1rem" }}>{p.note}</span>}
-            {p.link && <a className="project-link" href={p.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>View Case Study →</a>}
-            {p.hasPhotos && (
-              <div style={{ marginTop: "1.5rem" }}>
-                <div className="hoops-hero"><img src="/hoops-champions.jpg" alt="Uttarakhand Hoops Fest champions" /><div className="photo-overlay"><div className="photo-overlay-label">Kashipur · March 2024</div><div className="photo-overlay-sub">Champions receive ₹51,000 prize</div></div></div>
-                <div className="hoops-pair">
-                  <div><img src="/hoops-ceremony.jpg" alt="Opening ceremony" /><div className="photo-overlay"><div className="photo-overlay-label">Opening Ceremony</div></div></div>
-                  <div><img src="/hoops-opening.jpg" alt="Lamp lighting" /><div className="photo-overlay"><div className="photo-overlay-label">Inauguration</div></div></div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="project-stats">{p.stats.map(([l, v]) => <div key={l} className="project-stat"><span className="stat-label">{l}</span><span className="stat-value">{v}</span></div>)}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const detailRoutes = {
+  "01": "/work/mat",
+  "02": "/work/crafteve",
+  "03": "/work/nightingale",
+  "04": "/work/krishi",
+  "05": "/work/hoops",
+};
 
 export default function WorkPage() {
   useEffect(() => {
     document.title = "Work — Mridul Pathak";
     const m = (a, k, v) => { let el = document.querySelector(`meta[${a}="${k}"]`); if (!el) { el = document.createElement("meta"); el.setAttribute(a, k); document.head.appendChild(el); } el.setAttribute("content", v); };
-    m("name", "description", "Five real projects. Market entry strategy, demand forecasting, a drone startup, a basketball tournament, and a platform in progress. Real problems, real outcomes, real receipts.");
+    m("name", "description", "Five real projects. Market entry strategy, demand forecasting, a drone startup, a basketball tournament, and a platform in progress. Real problems, real outcomes.");
   }, []);
   useScrollReveal();
 
@@ -71,13 +41,43 @@ export default function WorkPage() {
       <div className="page-hero">
         <div className="page-hero__eyebrow">// 003 · Selected Work</div>
         <h1 className="page-hero__title">Work.</h1>
-        <p className="page-hero__sub">Five projects. Real problems. Real outcomes. Real receipts.</p>
+        <p className="page-hero__sub">Real problems. Real outcomes. Click any project for the full picture.</p>
         <span className="page-hero__divider-label">003 — Projects</span>
       </div>
-      <div className="work-wrap">
-        {projects.map(p => <ProjectRow key={p.num} p={p} />)}
-        <div style={{ borderTop: "1px solid rgba(10,10,8,.08)" }} />
+
+      <div className="work-list">
+        {projects.map((p, i) => {
+          const img = projectImages[p.num];
+          const route = detailRoutes[p.num];
+          return (
+            <div key={p.num} className="work-item reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <Link to={route} className="work-item__inner">
+                {/* image */}
+                <div className="work-item__img">
+                  <img src={img.src} alt={p.name} style={{ width: "100%", height: "100%", display: "block", filter: "grayscale(8%) sepia(4%)", transition: "transform 0.6s ease", ...img.style }} />
+                </div>
+                {/* text */}
+                <div className="work-item__text">
+                  <div className="work-item__meta">
+                    <span className="work-item__num">{p.num}</span>
+                    <span className="work-item__year">{p.year}</span>
+                  </div>
+                  <h2 className="work-item__name">{p.name}</h2>
+                  <p className="work-item__hook">{hooks[p.num]}</p>
+                  <div className="work-item__tags">
+                    {p.tags.slice(0, 3).map(([, t], i) => (
+                      <span key={i} className="work-item__tag">{t}</span>
+                    ))}
+                  </div>
+                  <span className="work-item__cta">Full project →</span>
+                </div>
+              </Link>
+              {i < projects.length - 1 && <div className="work-item__divider" />}
+            </div>
+          );
+        })}
       </div>
+
       <div className="marquee-wrap" aria-hidden="true">
         <div className="marquee-track">
           {["Decision Analytics","Market Entry Strategy","Demand Forecasting","Product Management","Stakeholder Communication","Go-To-Market",

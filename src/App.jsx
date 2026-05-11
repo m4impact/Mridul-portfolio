@@ -16,6 +16,7 @@ import HoopsPage from "./pages/projects/HoopsPage";
 import KrishiPage from "./pages/projects/KrishiPage";
 import MATPage from "./pages/projects/MATPage";
 import CraftevePage from "./pages/projects/CraftevePage";
+import NightingalePage from "./pages/projects/NightingalePage";
 
 function ScrollReset() {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/work/krishi" element={<KrishiPage />} />
         <Route path="/work/mat" element={<MATPage />} />
         <Route path="/work/crafteve" element={<CraftevePage />} />
+        <Route path="/work/nightingale" element={<NightingalePage />} />
         <Route path="/skills" element={<SkillsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
