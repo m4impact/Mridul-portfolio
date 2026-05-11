@@ -938,3 +938,33 @@ footer { background: var(--ink); padding: 2rem 3.5rem; display: flex; align-item
   .work-item__inner::before { display: none; }
   .work-item__cta { opacity: 1; }
 }
+
+/* work item image overlay — unifies visual theme on hover */
+.work-item__img {
+  position: relative;
+  overflow: hidden;
+}
+.work-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,8,0);
+  transition: background 0.4s ease;
+  pointer-events: none;
+}
+.work-item__inner:hover .work-item__overlay {
+  background: rgba(10,10,8,0.08);
+}
+.work-item__inner:hover .work-item__img img {
+  transform: scale(1.04);
+  filter: grayscale(25%) sepia(12%);
+}
+
+/* filmstrip-style left border on work items */
+.work-item__inner {
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s ease;
+  padding-left: calc(4rem - 3px);
+}
+.work-item__inner:hover {
+  border-color: var(--red);
+}

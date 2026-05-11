@@ -5,11 +5,17 @@ import Footer from "../components/Footer";
 import { projects } from "../data/content";
 
 const projectImages = {
-  "01": { src: "/mat-logo.png",        style: { objectFit: "contain", background: "#0A0A08", padding: "2rem" } },
-  "02": { src: "/crafteve-cover.png",  style: { objectFit: "cover", objectPosition: "center top" } },
-  "03": { src: "/nightingale-logo.png",style: { objectFit: "contain", background: "#f5efe4", padding: "2rem" } },
-  "04": { src: "/krishi-logo.png",     style: { objectFit: "contain", background: "#fff", padding: "2rem" } },
-  "05": { src: "/hoops-champions.jpg", style: { objectFit: "cover", objectPosition: "center top" } },
+  "01": { src: "/mat-logo.png",        bg: "#0A0A08", fit: "contain", pad: true },
+  "02": { src: "/crafteve-logo.png",   bg: "#F5F0E8", fit: "contain", pad: true },
+  "03": { src: "/nightingale-logo.png",bg: "#F5EDE0", fit: "contain", pad: true },
+  "04": { src: "/krishi-logo.png",     bg: "#F2EFE8", fit: "contain", pad: true },
+  "05": { src: "/hoops-champions.jpg", bg: "#0A0A08", fit: "cover",   pad: false },
+};
+
+// unified image filter per background type
+const imgFilter = {
+  dark:  "grayscale(20%) sepia(10%) brightness(0.9)",
+  light: "grayscale(15%) sepia(8%)",
 };
 
 const hooks = {
@@ -49,14 +55,32 @@ export default function WorkPage() {
         {projects.map((p, i) => {
           const img = projectImages[p.num];
           const route = detailRoutes[p.num];
+          const isDark = img.bg === "#0A0A08";
+          const filter = isDark ? imgFilter.dark : imgFilter.light;
+
           return (
             <div key={p.num} className="work-item reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
               <Link to={route} className="work-item__inner">
-                {/* image */}
-                <div className="work-item__img">
-                  <img src={img.src} alt={p.name} style={{ width: "100%", height: "100%", display: "block", filter: "grayscale(8%) sepia(4%)", transition: "transform 0.6s ease", ...img.style }} />
+
+                <div className="work-item__img" style={{ background: img.bg }}>
+                  <img
+                    src={img.src}
+                    alt={p.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      display: "block",
+                      objectFit: img.fit,
+                      objectPosition: "center",
+                      padding: img.pad ? "2.5rem" : 0,
+                      filter,
+                      transition: "transform 0.65s cubic-bezier(0.4,0,0.2,1), filter 0.4s ease",
+                    }}
+                  />
+                  {/* ink overlay on hover — unifies everything */}
+                  <div className="work-item__overlay" />
                 </div>
-                {/* text */}
+
                 <div className="work-item__text">
                   <div className="work-item__meta">
                     <span className="work-item__num">{p.num}</span>
