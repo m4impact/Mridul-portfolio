@@ -65,50 +65,5 @@ export default function NBAPage() {
             <p style={{ fontFamily:"var(--font-mono)", fontSize:"0.54rem", color:"rgba(10,10,8,0.5)", lineHeight:1.85, margin:0 }}>The persona-based design approach draws on narrative transportation theory — the mechanism by which audiences become absorbed in a message and reduce critical resistance. Different audiences require different narrative entry points not just different complexity levels. This is the core finding, and it applies beyond data visualization to any communication problem where the same information needs to reach genuinely different people.</p>
           </div>
 
-          <h2 className="reveal" style={{ fontFamily:"var(--font-display)", fontSize:"clamp(1.6rem,3vw,2.4rem)", color:"var(--ink)", lineHeight:1, marginTop:"3rem", marginBottom:"1.2rem" }}>Where this thinking went next</h2>
-          <p className="reveal">Directly into MAT. The platform adapts how it presents market intelligence based on where someone is in their decision-making — early exploration, validation, pitch preparation. Same underlying data, different presentation depth and tone. This project gave me the framework to think about that adaptation systematically rather than intuitively.</p>
-          <p className="reveal">And into my work at TMF, where the same platform data serves audiences with fundamentally different mental models — content creators who need engagement insights and local businesses who need conversion metrics. The persona-driven approach from this project is now informing which dashboard modules I build for which user type.</p>
 
-        </div>
-
-        {/* outcome */}
-        <div className="proj-outcome reveal">
-          <div className="proj-outcome__label">// Outcome</div>
-          <div className="proj-outcome__text">Three distinct variants built and documented with design decisions grounded in audience research. Framework directly applied to MAT's adaptive interface architecture and TMF dashboard work.</div>
-        </div>
-
-        {/* variants showcase — actual infographics */}
-        <div className="reveal" style={{ marginTop:"4rem" }}>
-          <div style={{ fontFamily:"var(--font-mono)", fontSize:".52rem", letterSpacing:".18em", textTransform:"uppercase", opacity:.28, marginBottom:"2rem" }}>// The three variants</div>
-
-          {[
-            { img:"/nba-variant-1.jpg", audience:"For Newcomers", name:"The Invisible Star", hook:"Stars and silhouettes. One big number. Zero jargon. High-contrast orange and yellow-green doing the narrative work before the text does.", bg:"#f0f4f8" },
-            { img:"/nba-variant-2.jpg", audience:"For Generalists", name:"ROI on the Court", hook:"Earth tones. Quadrant framework. Business language. The BCG matrix translated into basketball without requiring domain knowledge.", bg:"#f5f0e8" },
-            { img:"/nba-variant-3.jpg", audience:"For Enthusiasts", name:"Efficiency vs. Volume", hook:"Color gradient encoding RAPTOR score. Regression with confidence interval. Specific player callouts. Methodology documented.", bg:"#1a1a18" },
-          ].map(({ img, audience, name, hook, bg }, i) => (
-            <div key={name} className="reveal" style={{ marginBottom:"4rem", transitionDelay:`${i*0.1}s` }}>
-              <div style={{ fontFamily:"var(--font-mono)", fontSize:".46rem", letterSpacing:".18em", textTransform:"uppercase", color:"var(--red)", marginBottom:".5rem" }}>{audience}</div>
-              <div style={{ fontFamily:"var(--font-display)", fontSize:"clamp(1.4rem,2.5vw,2rem)", color:"var(--ink)", lineHeight:1, marginBottom:"1rem" }}>{name}</div>
-              <div style={{ background:bg, padding:"1.5rem", marginBottom:"1rem" }}>
-                <img src={img} alt={name} style={{ width:"100%", display:"block", filter: bg === "#1a1a18" ? "brightness(1.05)" : "grayscale(5%) sepia(4%)" }} />
-              </div>
-              <p style={{ fontFamily:"var(--font-mono)", fontSize:".54rem", color:"rgba(10,10,8,0.45)", lineHeight:1.85, maxWidth:"540px" }}>{hook}</p>
-              {i < 2 && <div style={{ height:"1px", background:"rgba(10,10,8,0.07)", marginTop:"3rem" }} />}
-            </div>
-          ))}
-        </div>
-
-        <div className="proj-report reveal" style={{ marginTop:"4rem" }}>
-          <div className="proj-report__label">// Report</div>
-          <p className="proj-report__desc">Full project report — persona mapping, three infographic variants, 30+ documented design decisions, AI iteration process, and framework applications beyond basketball.</p>
-          <a href="/reports/nba-persona-report.pdf" target="_blank" rel="noopener noreferrer" className="proj-report__btn">Download Report ↓</a>
-        </div>
-
-        <div style={{ marginTop:"2rem", paddingTop:"2rem", borderTop:"1px solid rgba(10,10,8,0.08)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-          <Link to="/work" style={{ fontFamily:"var(--font-mono)", fontSize:".52rem", letterSpacing:".14em", textTransform:"uppercase", color:"rgba(10,10,8,.35)", textDecoration:"none" }}>← All Work</Link>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
-}
+        {/* variants showcase
