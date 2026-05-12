@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../components/useScrollReveal";
 import Footer from "../components/Footer";
@@ -30,6 +30,69 @@ const detailRoutes = {
   "05": "/work/krishi",
   "06": "/work/hoops",
 };
+
+const filteredProjects = [
+  { id: "mat",        name: "MAT",               category: "Product",   brief: "Free market intelligence platform. In development. First-time founders.", year: "2026", route: "/work/mat",        report: false },
+  { id: "crafteve",   name: "Crafteve India",     category: "Strategy",  brief: "U.S. market entry. Phased pilot recommendation adopted. CBA + sensitivity.", year: "2025", route: "/work/crafteve",   report: true },
+  { id: "nightingale",name: "Nightingale",        category: "Analytics", brief: "Demand forecasting. R Studio. ~12% overstock reduction from forecast.", year: "2025", route: "/work/nightingale", report: false },
+  { id: "pfg",        name: "PFG Group",          category: "Operations",brief: "Supply chain optimization. Freezer utilization 40% → 92%. Real logistics operation.", year: "2025", route: "/work/pfg",         report: false },
+  { id: "krishi",     name: "Krishi Drone",       category: "Product",   brief: "Agri-tech startup. UPES incubator accepted. Farmer-first go-to-market.", year: "2024", route: "/work/krishi",     report: true },
+  { id: "hoops",      name: "Hoops Fest",         category: "Operations",brief: "3-day tournament. 1,000+ attendees. 7 sponsors. Indian Air Force teams.", year: "2024", route: "/work/hoops",      report: false },
+];
+
+const filterCategories = ["All", "Analytics", "Strategy", "Product", "Operations"];
+
+function WorkFilter() {
+  const [active, setActive] = useState("All");
+  const [current, setCurrent] = useState(0);
+  const scrollRef = useRef(null);
+
+  const filtered = active === "All" ? filteredProjects : filteredProjects.filter(p => p.category === active);
+
+  const goTo = (idx) => {
+    const next = Math.max(0, Math.min(idx, filtered.length - 1));
+    setCurrent(next);
+    const card = scrollRef.current?.children[next];
+    if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+  };
+
+  useEffect(() => { setCurrent(0); if (scrollRef.current) scrollRef.current.scrollLeft = 0; }, [active]);
+
+  return (
+    <div style={{ padding: "6rem 3.5rem 4rem", borderTop: "1px solid rgba(10,10,8,0.08)" }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.28, marginBottom: "1.5rem" }}>// Filter by discipline</div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
+        <div className="comm-filter-bar" style={{ marginBottom: 0 }}>
+          {filterCategories.map(f => (
+            <button key={f} className={`comm-filter-btn${active === f ? " active" : ""}`} onClick={() => setActive(f)}>{f}</button>
+          ))}
+        </div>
+        <div className="comm-scroll-hint__arrows">
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current - 1)} disabled={current === 0}>←</button>
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current + 1)} disabled={current === filtered.length - 1}>→</button>
+        </div>
+      </div>
+      <div ref={scrollRef} className="comm-projects-scroll" style={{ background: "rgba(10,10,8,0.03)" }}>
+        {filtered.map((p) => (
+          <Link key={p.id} to={p.route} className="comm-project-card">
+            <span className="comm-project-card__category">{p.category}</span>
+            <span className="comm-project-card__name">{p.name}</span>
+            <p className="comm-project-card__brief">{p.brief}</p>
+            <div className="comm-project-card__meta">
+              <span className="comm-project-card__year">{p.year}</span>
+              <span className="comm-project-card__cta">{p.report ? "Report available →" : "View project →"}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+      <div className="comm-slider-dots" style={{ marginTop: "1rem" }}>
+        {filtered.map((_, i) => (
+          <button key={i} className={`comm-slider-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function WorkPage() {
   useEffect(() => {
@@ -98,6 +161,7 @@ export default function WorkPage() {
         })}
       </div>
 
+      <WorkFilter />
       <div className="marquee-wrap" aria-hidden="true">
         <div className="marquee-track">
           {["Decision Analytics","Market Entry","Demand Forecasting","Product Management","Supply Chain","Go-To-Market",

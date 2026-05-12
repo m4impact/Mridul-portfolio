@@ -213,20 +213,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <div className="section-label reveal" style={{ marginTop: "2rem" }}>// In the press</div>
-          <p className="reveal d1" style={{ fontSize: "1.2rem", fontWeight: 400, lineHeight: 1.85, color: "rgba(10,10,8,.72)", marginBottom: "2rem", maxWidth: "580px" }}>
-            A local news channel covered the Hoops Fest twice. That doesn't happen unless something real is being built.
-          </p>
-          <div className="press-grid">
-            <div className="press-card reveal">
-              <div className="press-video"><iframe src="https://www.youtube.com/embed/NaBxIBpsMDE" title="Uttarakhand Hoops Fest press conference" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" /></div>
-              <div className="press-card-body"><div className="press-card-label">Pre-event · Press Conference</div><blockquote className="press-card-quote">Nothing meaningful happens alone. This city showed up for its youth — and its youth showed up for sport.</blockquote></div>
-            </div>
-            <div className="press-card reveal d1">
-              <div className="press-video"><iframe src="https://www.youtube.com/embed/UuKnFZZl_vs?start=170" title="Event day coverage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" /></div>
-              <div className="press-card-body"><div className="press-card-label">Event Day · News Coverage</div><blockquote className="press-card-quote">We wanted them to walk into that stadium and realise — there is a future here.</blockquote></div>
-            </div>
-          </div>
+
         </div>
       </div>
       <Footer />

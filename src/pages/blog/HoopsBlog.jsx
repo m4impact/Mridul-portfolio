@@ -66,6 +66,31 @@ export default function HoopsBlog() {
 
         </div>
 
+        <div className="blog-press reveal">
+          <h2 className="blog-h2">In the press.</h2>
+          <p className="reveal" style={{ marginBottom: "1.5rem" }}>A local news channel covered the event twice — before and on the day. That doesn't happen unless something real is being built.</p>
+          <div className="press-grid">
+            <div className="press-card">
+              <div className="press-video">
+                <iframe src="https://www.youtube.com/embed/NaBxIBpsMDE" title="Uttarakhand Hoops Fest — pre-event press conference" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+              </div>
+              <div className="press-card-body">
+                <div className="press-card-label">Pre-event · Press Conference</div>
+                <blockquote className="press-card-quote">Nothing meaningful happens alone. This city showed up for its youth — and its youth showed up for sport.</blockquote>
+              </div>
+            </div>
+            <div className="press-card">
+              <div className="press-video">
+                <iframe src="https://www.youtube.com/embed/UuKnFZZl_vs?start=170" title="Uttarakhand Hoops Fest — event day coverage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+              </div>
+              <div className="press-card-body">
+                <div className="press-card-label">Event Day · News Coverage</div>
+                <blockquote className="press-card-quote">We wanted them to walk into that stadium and realise — there is a future here.</blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="blog-footer reveal">
           <Link to="/community" className="blog-back">← Back to Community</Link>
           <a href="mailto:pathakm3@vcu.edu" className="blog-contact-cta">Want to talk about this → pathakm3@vcu.edu</a>
