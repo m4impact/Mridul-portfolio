@@ -97,13 +97,21 @@ function FilmstripCarousel({ blogs }) {
           {blogs.map((b) => (
             <Link key={b.to} to={b.to} className="comm-film-card">
               <div className="comm-film-card__img" style={{ background: b.imgBg }}>
-                {b.imgStyle?.objectFit === "contain" ? (
-                  <div className="comm-film-card__img-logo">
-                    <img src={b.img} alt={b.title} />
-                  </div>
-                ) : (
-                  <img src={b.img} alt={b.title} />
-                )}
+                <img
+                  src={b.img}
+                  alt={b.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: b.imgStyle?.objectFit || "cover",
+                    objectPosition: "center",
+                    display: "block",
+                    padding: b.imgStyle?.objectFit === "contain" ? "3rem" : 0,
+                    filter: b.imgBg === "#0A0A08"
+                      ? "grayscale(15%) sepia(8%) brightness(0.85)"
+                      : "grayscale(12%) sepia(8%)",
+                  }}
+                />
               </div>
               <div className="comm-film-card__body">
                 <span className="comm-film-card__label">{b.label}</span>

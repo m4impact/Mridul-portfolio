@@ -8,7 +8,7 @@ const projectImages = {
   "01": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true },
   "02": { src: "/crafteve-logo.png",    bg: "#F5F0E8", fit: "contain", pad: true },
   "03": { src: "/nightingale-logo.png", bg: "#F5EDE0", fit: "contain", pad: true },
-  "04": { src: "/hoops-champions.jpg",  bg: "#0A0A08", fit: "cover",   pad: false },
+  "04": { src: null,                    bg: "#E8E4DA", fit: "contain", pad: true },
   "05": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true },
   "06": { src: "/hoops-champions.jpg",  bg: "#0A0A08", fit: "cover",   pad: false },
 };
@@ -58,17 +58,23 @@ export default function WorkPage() {
             <div key={p.num} className="work-item reveal" style={{ transitionDelay: `${i * 0.07}s` }}>
               <Link to={route} className="work-item__inner">
                 <div className="work-item__img" style={{ background: img.bg }}>
-                  <img
-                    src={img.src}
-                    alt={p.name}
-                    style={{
-                      width: "100%", height: "100%", display: "block",
-                      objectFit: img.fit, objectPosition: "center",
-                      padding: img.pad ? "2.5rem" : 0,
-                      filter: isDark ? "grayscale(20%) sepia(10%) brightness(0.85)" : "grayscale(15%) sepia(8%)",
-                      transition: "transform 0.65s cubic-bezier(0.4,0,0.2,1), filter 0.4s ease",
-                    }}
-                  />
+                  {img.src ? (
+                    <img
+                      src={img.src}
+                      alt={p.name}
+                      style={{
+                        width: "100%", height: "100%", display: "block",
+                        objectFit: img.fit, objectPosition: "center",
+                        padding: img.pad ? "2.5rem" : 0,
+                        filter: isDark ? "grayscale(20%) sepia(10%) brightness(0.85)" : "grayscale(15%) sepia(8%)",
+                        transition: "transform 0.65s cubic-bezier(0.4,0,0.2,1), filter 0.4s ease",
+                      }}
+                    />
+                  ) : (
+                    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,4rem)", color: "rgba(10,10,8,0.12)", letterSpacing: "0.02em", textAlign: "center", padding: "1rem" }}>{p.name}</span>
+                    </div>
+                  )}
                   <div className="work-item__overlay" />
                 </div>
                 <div className="work-item__text">
