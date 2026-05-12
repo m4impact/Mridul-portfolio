@@ -44,12 +44,24 @@ export default function ContactPage() {
     if (!validate()) return;
     setStatus("sending");
     try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: fields.name,
+          email: fields.email,
+          message: fields.message,
+          time: new Date().toLocaleString(),
+        },
+        EMAILJS_PUBLIC_KEY
+      );
       setStatus("sent");
     } catch (err) {
       console.error("EmailJS error:", err);
-      // Fallback — open mailto if EmailJS not configured yet
-      window.location.href = `mailto:pathakm3@vcu.edu?subject=Message from ${fields.name}&body=${encodeURIComponent(fields.message)}`;
+      // Reliable fallback — opens user's email client
+      window.location.href = `mailto:pathakm3@vcu.edu?subject=Message from ${encodeURIComponent(fields.name)}&body=${encodeURIComponent(`From: ${fields.name} (${fields.email})
+
+${fields.message}`)}`;
       setStatus("sent");
     }
   };
