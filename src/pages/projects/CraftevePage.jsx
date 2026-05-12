@@ -24,7 +24,7 @@ const project = {
   outcome: "Client adopted phased U.S. pilot recommendation. KPI framework implemented for Q1 2026 review gate. Report available for download.",
   photos: [],
   reportUrl: "/reports/crafteve-market-entry.pdf",
-  reportDesc: "Full market entry analysis — competitive landscape, cost-benefit analysis, sensitivity modelling across tariff and demand scenarios, and phased pilot recommendation with KPI framework.",
+  reportDesc: "Full market entry analysis — competitive landscape, CBA, sensitivity modelling, and phased pilot recommendation.",
 };
 
 export default function CraftevePage() {

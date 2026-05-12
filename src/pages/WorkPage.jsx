@@ -41,10 +41,10 @@ const filteredProjects = [
   { id: "mat",          name: "MAT",                      category: "Product",            brief: "Free market intelligence platform. In development. First-time founders.", year: "2026", route: "/work/mat",          report: false },
   { id: "crafteve",     name: "Crafteve India",            category: "Strategy",           brief: "U.S. market entry. Phased pilot recommendation adopted. CBA + sensitivity.", year: "2025", route: "/work/crafteve",     report: true },
   { id: "nightingale",  name: "Nightingale Ice Cream",     category: "Analytics",          brief: "Demand forecasting. R Studio. ~12% overstock reduction from forecast.", year: "2025", route: "/work/nightingale",   report: false },
-  { id: "pfg",          name: "PFG Group",                 category: "Operations",         brief: "Supply chain optimization. Freezer utilization 40% → 92%.", year: "2025", route: "/work/pfg",           report: false },
+  { id: "pfg",          name: "PFG Group",                 category: "Operations",         brief: "Supply chain optimization. Freezer utilization 40% → 92%.", year: "2025", route: "/work/pfg",           report: true },
   { id: "krishi",       name: "Krishi Drone",              category: "Product",            brief: "Agri-tech startup. UPES incubator accepted. Farmer-first go-to-market.", year: "2024", route: "/work/krishi",       report: true },
   { id: "hoops",        name: "Hoops Fest",                category: "Operations",         brief: "3-day tournament. 1,000+ attendees. 7 sponsors. Indian Air Force teams.", year: "2024", route: "/work/hoops",        report: false },
-  { id: "nba",          name: "NBA Data Visualization",    category: "Marketing Analytics",brief: "3 audience personas. 3 infographics. 1 dataset. Color psychology, narrative design, persona mapping.", year: "2026", route: "/work/nba",          report: false },
+  { id: "nba",          name: "NBA Data Visualization",    category: "Marketing Analytics",brief: "3 audience personas. 3 infographics. 1 dataset. Color psychology, narrative design, persona mapping.", year: "2026", route: "/work/nba",          report: true },
   { id: "globalintern", name: "GlobalIntern",              category: "Database",           brief: "19-table Oracle Apex schema. F-1 CPT/OPT authorization. 3NF, disjoint subtypes, 5 SQL queries.", year: "2026", route: "/work/globalintern", report: false },
 ];
 

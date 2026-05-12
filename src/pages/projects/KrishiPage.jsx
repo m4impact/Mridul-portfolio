@@ -24,7 +24,7 @@ const project = {
   outcome: "Business case accepted into UPES incubator. Prototype phase initiated with School of Engineering. Farmer-first model validated through direct stakeholder interviews.",
   photos: [],
   reportUrl: "/reports/krishi-drone-business-case.pdf",
-  reportDesc: "Full business case including CBA, market sizing, farmer-first GTM strategy, seasonal cash flow model, and stakeholder interview findings.",
+  reportDesc: "Full business pitch report — market opportunity, dual-function drone system, competitive analysis, business model, and go-to-market strategy.",
 };
 
 export default function KrishiPage() {

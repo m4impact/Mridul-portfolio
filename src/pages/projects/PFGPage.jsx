@@ -23,8 +23,8 @@ const project = {
   ],
   outcome: "Freezer utilization: 40% → 92%. Optimization model adopted for ongoing capacity planning. +52 percentage point improvement with no capital expenditure required.",
   photos: [],
-  reportUrl: null,
-  reportDesc: null,
+  reportUrl: "/reports/pfg-supply-chain-optimization.pdf",
+  reportDesc: "Full project report — optimization model formulation, simulation framework, 30-day results, and capacity planning recommendations.",
 };
 
 export default function PFGPage() {

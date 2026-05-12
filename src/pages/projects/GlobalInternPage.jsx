@@ -82,6 +82,7 @@ export default function GlobalInternPage() {
 
         <div style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: "1px solid rgba(10,10,8,0.08)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
           <Link to="/work" style={{ fontFamily: "var(--font-mono)", fontSize: ".52rem", letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(10,10,8,.35)", textDecoration: "none" }}>← All Work</Link>
+          <a href="/reports/globalintern-database-design.pdf" target="_blank" rel="noopener noreferrer" className="proj-report__btn" style={{ marginLeft: "auto" }}>Download Presentation ↓</a>
           <a href="mailto:pathakm3@vcu.edu" style={{ fontFamily: "var(--font-mono)", fontSize: ".52rem", letterSpacing: ".1em", color: "var(--red)", textDecoration: "none", borderBottom: "1px solid rgba(192,57,43,0.3)", paddingBottom: "2px" }}>Questions about this → pathakm3@vcu.edu</a>
         </div>
       </div>
