@@ -76,53 +76,34 @@ const allProjects = [
 const filters = ["all", "analytics", "strategy", "product", "community"];
 
 function BlogScroll({ blogs }) {
+  const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
-  const isDragging = useRef(false);
-  const hasMoved = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
 
-  const onMouseDown = (e) => {
-    isDragging.current = true;
-    hasMoved.current = false;
-    startX.current = e.pageX - scrollRef.current.offsetLeft;
-    scrollLeft.current = scrollRef.current.scrollLeft;
-    scrollRef.current.style.cursor = "grabbing";
-  };
-  const onMouseUp = () => {
-    isDragging.current = false;
-    if (scrollRef.current) scrollRef.current.style.cursor = "grab";
-  };
-  const onMouseMove = (e) => {
-    if (!isDragging.current) return;
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = x - startX.current;
-    if (Math.abs(walk) > 5) { hasMoved.current = true; e.preventDefault(); }
-    scrollRef.current.scrollLeft = scrollLeft.current - walk * 1.5;
+  const goTo = (idx) => {
+    const next = Math.max(0, Math.min(idx, blogs.length - 1));
+    setCurrent(next);
+    const card = scrollRef.current?.children[next];
+    if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <div style={{ display: "flex", justifyContent: "flex-end", padding: "0 3.5rem", marginBottom: "0.8rem", gap: "0.5rem", alignItems: "center" }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(10,10,8,0.25)" }}>Drag to read</span>
-        <button className="comm-scroll-hint__btn" onClick={() => scrollRef.current?.scrollBy({ left: -400, behavior: "smooth" })}>←</button>
-        <button className="comm-scroll-hint__btn" onClick={() => scrollRef.current?.scrollBy({ left: 400, behavior: "smooth" })}>→</button>
+    <div className="comm-slider-wrap">
+      {/* nav controls */}
+      <div className="comm-slider-controls">
+        <div className="comm-slider-dots">
+          {blogs.map((_, i) => (
+            <button key={i} className={`comm-slider-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} aria-label={`Go to story ${i + 1}`} />
+          ))}
+        </div>
+        <div className="comm-scroll-hint__arrows">
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current - 1)} disabled={current === 0}>←</button>
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current + 1)} disabled={current === blogs.length - 1}>→</button>
+        </div>
       </div>
-      <div
-        ref={scrollRef}
-        className="comm-blog-scroll"
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
-        onMouseMove={onMouseMove}
-      >
-        {blogs.map((b) => (
-          <Link
-            key={b.to}
-            to={b.to}
-            className="comm-blog"
-            onClick={(e) => { if (hasMoved.current) e.preventDefault(); }}
-          >
+      {/* track */}
+      <div ref={scrollRef} className="comm-blog-scroll">
+        {blogs.map((b, i) => (
+          <Link key={b.to} to={b.to} className="comm-blog">
             <div className="comm-blog__img" style={{ background: b.imgBg }}>
               {b.img && <img src={b.img} alt={b.title} style={{ width: "100%", height: "100%", display: "block", ...b.imgStyle }} />}
             </div>
@@ -140,52 +121,44 @@ function BlogScroll({ blogs }) {
 }
 
 function HorizontalScroll({ filtered }) {
+  const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
-  const isDragging = useRef(false);
-  const hasMoved = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
 
-  const onMouseDown = (e) => {
-    isDragging.current = true;
-    hasMoved.current = false;
-    startX.current = e.pageX - scrollRef.current.offsetLeft;
-    scrollLeft.current = scrollRef.current.scrollLeft;
-    scrollRef.current.style.cursor = "grabbing";
-  };
-  const onMouseUp = () => { isDragging.current = false; if (scrollRef.current) scrollRef.current.style.cursor = "grab"; };
-  const onMouseMove = (e) => {
-    if (!isDragging.current) return;
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = x - startX.current;
-    if (Math.abs(walk) > 5) { hasMoved.current = true; e.preventDefault(); }
-    scrollRef.current.scrollLeft = scrollLeft.current - walk * 1.5;
+  const goTo = (idx) => {
+    const next = Math.max(0, Math.min(idx, filtered.length - 1));
+    setCurrent(next);
+    const card = scrollRef.current?.children[next];
+    if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
   };
 
   return (
-    <div
-      id="proj-scroll"
-      ref={scrollRef}
-      className="comm-projects-scroll"
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-      onMouseMove={onMouseMove}
-    >
-      {filtered.map((p) => (
-        <Link key={p.id} to={p.route} className="comm-project-card"
-          onClick={(e) => { if (hasMoved.current) e.preventDefault(); }}>
-          <span className="comm-project-card__category">{p.category}</span>
-          <span className="comm-project-card__name">{p.name}</span>
-          <p className="comm-project-card__brief">{p.brief}</p>
-          <div className="comm-project-card__meta">
-            <span className="comm-project-card__year">{p.year}</span>
-            <span className="comm-project-card__cta">
-              {p.report ? "Report available →" : "View project →"}
-            </span>
-          </div>
-        </Link>
-      ))}
+    <div className="comm-slider-wrap">
+      <div className="comm-slider-controls">
+        <div className="comm-slider-dots">
+          {filtered.map((_, i) => (
+            <button key={i} className={`comm-slider-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} aria-label={`Go to project ${i + 1}`} />
+          ))}
+        </div>
+        <div className="comm-scroll-hint__arrows">
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current - 1)} disabled={current === 0}>←</button>
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current + 1)} disabled={current === filtered.length - 1}>→</button>
+        </div>
+      </div>
+      <div ref={scrollRef} id="proj-scroll" className="comm-projects-scroll">
+        {filtered.map((p) => (
+          <Link key={p.id} to={p.route} className="comm-project-card">
+            <span className="comm-project-card__category">{p.category}</span>
+            <span className="comm-project-card__name">{p.name}</span>
+            <p className="comm-project-card__brief">{p.brief}</p>
+            <div className="comm-project-card__meta">
+              <span className="comm-project-card__year">{p.year}</span>
+              <span className="comm-project-card__cta">
+                {p.report ? "Report available →" : "View project →"}
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
@@ -315,25 +288,16 @@ export default function Community() {
             <div className="section-label" style={{ marginBottom: "1.2rem" }}>// All work — filter by discipline</div>
           </Fade>
           <Fade delay={100}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem", flexWrap: "wrap", gap: "0.8rem" }}>
-              <div className="comm-filter-bar" style={{ marginBottom: 0 }}>
-                {filters.map(f => (
-                  <button
-                    key={f}
-                    className={`comm-filter-btn${activeFilter === f ? " active" : ""}`}
-                    onClick={() => setActiveFilter(f)}
-                  >
-                    {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)}
-                  </button>
-                ))}
-              </div>
-              <div className="comm-scroll-hint">
-                <span>Drag to scroll</span>
-                <div className="comm-scroll-hint__arrows">
-                  <button className="comm-scroll-hint__btn" onClick={() => document.getElementById("proj-scroll").scrollBy({ left: -320, behavior: "smooth" })}>←</button>
-                  <button className="comm-scroll-hint__btn" onClick={() => document.getElementById("proj-scroll").scrollBy({ left: 320, behavior: "smooth" })}>→</button>
-                </div>
-              </div>
+            <div className="comm-filter-bar">
+              {filters.map(f => (
+                <button
+                  key={f}
+                  className={`comm-filter-btn${activeFilter === f ? " active" : ""}`}
+                  onClick={() => { setActiveFilter(f); }}
+                >
+                  {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)}
+                </button>
+              ))}
             </div>
           </Fade>
         </div>
