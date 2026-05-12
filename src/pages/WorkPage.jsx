@@ -103,14 +103,14 @@ function WorkFilter() {
 }
 
 const timelines = {
-  "01": { date: "Jan 2026 → Ongoing",  type: "active" },
-  "02": { date: "Nov 2025",            type: "complete" },
-  "03": { date: "Nov 2025",            type: "complete" },
-  "04": { date: "Nov 2025",            type: "complete" },
-  "05": { date: "Aug – Dec 2024",      type: "complete" },
-  "06": { date: "Feb 2024 → Ongoing",  type: "active" },
-  "07": { date: "Jan – May 2026",      type: "complete" },
-  "08": { date: "Sep – Dec 2025",      type: "complete" },
+  "01": { date: "Jan 2026 → Current",   type: "active" },
+  "02": { date: "Oct – Dec 2025",       type: "complete" },
+  "03": { date: "Oct – Dec 2025",       type: "complete" },
+  "04": { date: "Oct – Dec 2025",       type: "complete" },
+  "05": { date: "Oct – Dec 2024",       type: "complete" },
+  "06": { date: "Jan 2024 → Current",   type: "active" },
+  "07": { date: "Jan – May 2026",       type: "complete" },
+  "08": { date: "Oct – Dec 2025",       type: "complete" },
 };
 
 export default function WorkPage() {
