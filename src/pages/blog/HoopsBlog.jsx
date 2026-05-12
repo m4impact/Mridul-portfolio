@@ -130,6 +130,17 @@ export default function HoopsBlog() {
             ))}
           </div>
 
+          <h2 className="blog-h2 reveal">How it actually got funded</h2>
+          <p className="reveal">Funding didn't come from one place. It came from everywhere. Marketing collaterals. In-person pitches. Stakeholder conversations that turned into commitments. Kids in the community made donations. That last part I still think about — children who couldn't afford much, putting something in because they believed the thing was worth doing.</p>
+          <p className="reveal">The prize pool ended up at ₹1,00,000. First place took ₹51,000. That's real money in a Tier-3 city. Real enough that teams showed up from outside the region. Real enough that winning meant something beyond a trophy.</p>
+          <p className="reveal">And then there was everything else — logistics, accommodation, match scheduling, referees, the court setup, the ceremony. Every moving part was managed by the same people who used to just play there in the evening. When you build something with people who care about it as much as you do, the work doesn't feel like work in the same way.</p>
+
+          <div className="reveal" style={{ margin: "2rem 0", padding: "1.6rem 2rem", background: "rgba(192,57,43,0.04)", borderLeft: "2px solid var(--red)" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300, fontSize: "clamp(1rem,1.6vw,1.3rem)", color: "var(--ink)", lineHeight: 1.7, margin: 0 }}>
+              It was amazing to do something this impactful. Not because of the scale — because of what the scale meant. Every rupee raised, every team that showed up, every child who watched from the stands and thought: I could do that. That's what it was for.
+            </p>
+          </div>
+
           <h2 className="blog-h2 reveal">What comes next</h2>
           <p className="reveal">2026 edition is in planning. Expanded format. Regional teams. The stadium that was empty before is now full of children training. That's the actual outcome — not the event, but what the event made possible after it ended.</p>
           <p className="reveal">The court still has some potholes. We'll fix those too.</p>
