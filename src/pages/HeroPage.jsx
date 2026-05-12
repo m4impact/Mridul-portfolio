@@ -89,7 +89,6 @@ export default function HeroPage() {
         {lines.map(t => <div key={t} className="ruled-line" style={{ top: t }} />)}
       </div>
       <div className="letterbox top" aria-hidden="true" />
-      <div className="letterbox bottom" aria-hidden="true" />
 
       <div className="hero-content">
         <div className="hero-eyebrow">// 001 &nbsp;·&nbsp; Richmond, VA &nbsp;·&nbsp; VCU MDA '26</div>
