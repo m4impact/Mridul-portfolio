@@ -67,22 +67,25 @@ export default function NBAPage() {
           <div className="proj-outcome__text">Three distinct variants built and documented with design decisions grounded in audience research. Framework directly applied to MAT's adaptive interface architecture and TMF dashboard work.</div>
         </div>
 
-        {/* variants showcase */}
+        {/* variants showcase — actual infographics */}
         <div className="reveal" style={{ marginTop:"4rem" }}>
-          <div style={{ fontFamily:"var(--font-mono)", fontSize:".52rem", letterSpacing:".18em", textTransform:"uppercase", opacity:.28, marginBottom:"1.5rem" }}>// The three variants</div>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"1px", background:"rgba(10,10,8,0.08)", border:"1px solid rgba(10,10,8,0.08)" }}>
-            {[
-              { name:"The Invisible Star", audience:"Newcomers", hook:"Stars and silhouettes. One big number. Zero jargon. High-contrast orange and yellow-green doing the narrative work before the text does." },
-              { name:"ROI on the Court", audience:"Generalists", hook:"Earth tones. Quadrant framework. Business language. The BCG matrix translated into basketball without requiring basketball knowledge." },
-              { name:"Efficiency vs. Volume", audience:"Enthusiasts", hook:"Color gradient encoding a third variable. Regression with confidence intervals. Specific outliers named. Methodology documented because this audience audits it." },
-            ].map(({ name, audience, hook }) => (
-              <div key={name} style={{ background:"var(--paper)", padding:"1.8rem 1.6rem", borderRight:"1px solid rgba(10,10,8,0.08)" }}>
-                <div style={{ fontFamily:"var(--font-mono)", fontSize:".44rem", letterSpacing:".16em", textTransform:"uppercase", color:"var(--red)", marginBottom:".6rem" }}>{audience}</div>
-                <div style={{ fontFamily:"var(--font-display)", fontSize:"1.2rem", color:"var(--ink)", lineHeight:1, marginBottom:".7rem" }}>{name}</div>
-                <p style={{ fontFamily:"var(--font-mono)", fontSize:".52rem", color:"rgba(10,10,8,0.42)", lineHeight:1.8 }}>{hook}</p>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:".52rem", letterSpacing:".18em", textTransform:"uppercase", opacity:.28, marginBottom:"2rem" }}>// The three variants</div>
+
+          {[
+            { img:"/nba-variant-1.jpg", audience:"For Newcomers", name:"The Invisible Star", hook:"Stars and silhouettes. One big number. Zero jargon. High-contrast orange and yellow-green doing the narrative work before the text does.", bg:"#f0f4f8" },
+            { img:"/nba-variant-2.jpg", audience:"For Generalists", name:"ROI on the Court", hook:"Earth tones. Quadrant framework. Business language. The BCG matrix translated into basketball without requiring domain knowledge.", bg:"#f5f0e8" },
+            { img:"/nba-variant-3.jpg", audience:"For Enthusiasts", name:"Efficiency vs. Volume", hook:"Color gradient encoding RAPTOR score. Regression with confidence interval. Specific player callouts. Methodology documented.", bg:"#1a1a18" },
+          ].map(({ img, audience, name, hook, bg }, i) => (
+            <div key={name} className="reveal" style={{ marginBottom:"4rem", transitionDelay:`${i*0.1}s` }}>
+              <div style={{ fontFamily:"var(--font-mono)", fontSize:".46rem", letterSpacing:".18em", textTransform:"uppercase", color:"var(--red)", marginBottom:".5rem" }}>{audience}</div>
+              <div style={{ fontFamily:"var(--font-display)", fontSize:"clamp(1.4rem,2.5vw,2rem)", color:"var(--ink)", lineHeight:1, marginBottom:"1rem" }}>{name}</div>
+              <div style={{ background:bg, padding:"1.5rem", marginBottom:"1rem" }}>
+                <img src={img} alt={name} style={{ width:"100%", display:"block", filter: bg === "#1a1a18" ? "brightness(1.05)" : "grayscale(5%) sepia(4%)" }} />
               </div>
-            ))}
-          </div>
+              <p style={{ fontFamily:"var(--font-mono)", fontSize:".54rem", color:"rgba(10,10,8,0.45)", lineHeight:1.85, maxWidth:"540px" }}>{hook}</p>
+              {i < 2 && <div style={{ height:"1px", background:"rgba(10,10,8,0.07)", marginTop:"3rem" }} />}
+            </div>
+          ))}
         </div>
 
         <div style={{ marginTop:"4rem", paddingTop:"2rem", borderTop:"1px solid rgba(10,10,8,0.08)" }}>
