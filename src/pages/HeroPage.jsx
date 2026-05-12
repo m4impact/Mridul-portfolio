@@ -24,70 +24,102 @@ const NAV_ITEMS = [
 ];
 
 export default function HeroPage() {
-  const [idx, setIdx] = useState(0);
+  const [idx, setIdx]       = useState(0);
   const [fading, setFading] = useState(false);
-  const [lines, setLines] = useState([]);
-  const [tc, setTc] = useState("00:00:00:00");
-  const [count, setCount] = useState(0);
+  const [count, setCount]   = useState(0);
+  const [tc, setTc]         = useState("00:00:00:00");
+  const [lines, setLines]   = useState([]);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const ruledRef = useRef(null);
+  const animRef  = useRef(null);
+  const targetMouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     document.title = "Mridul Pathak — Decision Analytics & Product Strategy";
     const m = (a, k, v) => { let el = document.querySelector(`meta[${a}="${k}"]`); if (!el) { el = document.createElement("meta"); el.setAttribute(a, k); document.head.appendChild(el); } el.setAttribute("content", v); };
     m("name", "description", "Mridul Pathak — Product Manager at TMF, Richmond VA. Decision Analytics at VCU. Building MAT. Open to conversations about ideas, markets, and problems worth solving.");
-    m("property", "og:title", "Mridul Pathak — Decision Analytics & Product Strategy");
   }, []);
 
+  // ruled lines
   useEffect(() => {
-    const build = () => setLines(Array.from({ length: Math.ceil(window.innerHeight / 50) + 2 }, (_, i) => i * 50));
+    const build = () => setLines(Array.from({ length: Math.ceil(window.innerHeight / 48) + 2 }, (_, i) => i * 48));
     build();
     window.addEventListener("resize", build);
     return () => window.removeEventListener("resize", build);
   }, []);
 
+  // tagline rotation
   useEffect(() => {
     const t = setInterval(() => {
       setFading(true);
       setTimeout(() => { setIdx(i => (i + 1) % TAGLINES.length); setFading(false); }, 450);
-    }, 4000);
+    }, 4200);
     return () => clearInterval(t);
   }, []);
 
+  // timecode on scroll
   useEffect(() => {
     const fn = () => {
       const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
       const s = Math.floor(p * 7200), fr = Math.floor((p * 7200 % 1) * 24);
       const pad = n => String(n).padStart(2, "0");
-      setTc(`${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}:${pad(fr)}`);
+      setTc(`${pad(Math.floor(s/3600))}:${pad(Math.floor(s/60)%60)}:${pad(s%60)}:${pad(fr)}`);
     };
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  // count up 0 → 1000
   useEffect(() => {
     let v = 0;
-    const step = () => { v = Math.min(v + 28, 1000); setCount(v); if (v < 1000) requestAnimationFrame(step); };
-    const t = setTimeout(() => requestAnimationFrame(step), 900);
+    const step = () => { v = Math.min(v + 22, 1000); setCount(v); if (v < 1000) requestAnimationFrame(step); };
+    const t = setTimeout(() => requestAnimationFrame(step), 1000);
     return () => clearTimeout(t);
   }, []);
 
+  // smooth mouse parallax on ruled lines
   useEffect(() => {
-    const onMove = (e) => {
-      if (!ruledRef.current) return;
-      const cy = (e.clientY / window.innerHeight) - 0.5;
-      ruledRef.current.querySelectorAll(".ruled-line").forEach((el, i) => {
-        el.style.transform = `translateY(${cy * ((i % 3) + 1) * 5}px)`;
-      });
+    const onMove = e => {
+      targetMouse.current = {
+        x: (e.clientX / window.innerWidth) - 0.5,
+        y: (e.clientY / window.innerHeight) - 0.5,
+      };
     };
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+
+    const animate = () => {
+      setMousePos(prev => ({
+        x: prev.x + (targetMouse.current.x - prev.x) * 0.06,
+        y: prev.y + (targetMouse.current.y - prev.y) * 0.06,
+      }));
+      animRef.current = requestAnimationFrame(animate);
+    };
+    animRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(animRef.current);
+    };
   }, []);
 
   return (
     <div id="hero-page">
+      {/* ruled lines with parallax */}
       <div className="ruled-lines" ref={ruledRef} aria-hidden="true">
-        {lines.map(t => <div key={t} className="ruled-line" style={{ top: t }} />)}
+        {lines.map((top, i) => (
+          <div
+            key={top}
+            className="ruled-line"
+            style={{
+              top,
+              transform: `translateY(${mousePos.y * ((i % 4) + 1) * 6}px)`,
+              transition: "none",
+            }}
+          />
+        ))}
       </div>
+
+      {/* top letterbox only */}
       <div className="letterbox top" aria-hidden="true" />
 
       <div className="hero-content">
@@ -99,7 +131,12 @@ export default function HeroPage() {
           <span className="hero-name__last">Pathak</span>
         </h1>
 
-        <p className="hero-tagline" style={{ opacity: fading ? 0 : 1 }}>{TAGLINES[idx]}</p>
+        <p
+          className="hero-tagline"
+          style={{ opacity: fading ? 0 : 1, transition: "opacity 0.45s ease" }}
+        >
+          {TAGLINES[idx]}
+        </p>
 
         <div className="hero-tags">
           {["Product Strategy", "Decision Analytics", "Market Entry", "Forecasting", "CPT / OPT Ready"].map(t => (
@@ -113,7 +150,9 @@ export default function HeroPage() {
             <div key={label} className="hero-stat">
               <div className="hero-stat__label">{label}</div>
               <div className="hero-stat__value">
-                {countTo ? (count >= 1000 ? `1,000${suffix}` : count) : value}
+                {countTo
+                  ? (count >= 1000 ? `1,000${suffix}` : count || "0")
+                  : value}
               </div>
               <div className="hero-stat__sub">{sub}</div>
             </div>
@@ -121,7 +160,7 @@ export default function HeroPage() {
         </div>
       </div>
 
-      {/* Full-width nav bar — all six pages */}
+      {/* full-width nav bar — fills from bottom on hover */}
       <div className="hero-nav-bar">
         {NAV_ITEMS.map(({ to, label, sub }) => (
           <Link key={to} to={to} className="hero-nav-bar__item">
