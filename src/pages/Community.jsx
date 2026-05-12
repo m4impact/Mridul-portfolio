@@ -65,56 +65,62 @@ const blogs = [
 ];
 
 const allProjects = [
-  { id: "hoops",      name: "Uttarakhand Hoops Fest",          brief: "3-day basketball tournament. 1,000+ attendees. Indian Air Force sent teams. 7 sponsors. Built from nothing.", year: "2024", category: "community", route: "/work/hoops",      report: null },
-  { id: "mat",        name: "MAT — My Ambition Tool",           brief: "Free market intelligence platform for first-time founders. In development. Not a class project.", year: "2026", category: "product",   route: "/work/mat",        report: null },
-  { id: "krishi",     name: "Krishi Drone",                     brief: "Agri-tech startup for smallholder farmers. UPES incubator accepted. Farmer-first go-to-market.", year: "2024", category: "product",   route: "/work/krishi",     report: "/reports/krishi-drone-business-case.pdf" },
-  { id: "crafteve",   name: "Crafteve India — U.S. Market Entry",brief: "Decision analytics consulting. Phased U.S. pilot recommendation adopted by client. CBA + sensitivity.", year: "2025", category: "strategy",  route: "/work/crafteve",   report: "/reports/crafteve-market-entry.pdf" },
-  { id: "nightingale",name: "Nightingale Ice Cream",            brief: "Demand forecasting for real Richmond business. R Studio. ~12% overstock reduction from forecast.", year: "2025", category: "analytics", route: "/work/nightingale", report: null },
-  { id: "pfg",        name: "PFG Group — Supply Chain",         brief: "Optimization model for real logistics operation. Freezer utilization improved from 40% to 92%.", year: "2025", category: "analytics", route: "/work/pfg",         report: null },
+  { id: "hoops",  name: "Uttarakhand Hoops Fest", brief: "3-day basketball tournament. 1,000+ attendees. Indian Air Force sent teams. 7 sponsors. Built from nothing in Kashipur.", year: "2024", route: "/work/hoops",  report: null },
+  { id: "mat",    name: "MAT — My Ambition Tool",  brief: "Free market intelligence platform for first-time founders. In development. Not a class project. Not affiliated with TMF.", year: "2026", route: "/work/mat",    report: null },
+  { id: "krishi", name: "Krishi Drone",             brief: "Agri-tech startup for Indian smallholder farmers. UPES incubator accepted. Farmer-first go-to-market model.", year: "2024", route: "/work/krishi", report: "/reports/krishi-drone-business-case.pdf" },
 ];
 
-const filters = ["all", "analytics", "strategy", "product", "community"];
-
-function BlogScroll({ blogs }) {
+function FilmstripCarousel({ blogs }) {
   const [current, setCurrent] = useState(0);
-  const scrollRef = useRef(null);
+  const trackRef = useRef(null);
 
   const goTo = (idx) => {
     const next = Math.max(0, Math.min(idx, blogs.length - 1));
     setCurrent(next);
-    const card = scrollRef.current?.children[next];
-    if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${next * 100}%)`;
+    }
   };
 
   return (
-    <div className="comm-slider-wrap">
-      {/* nav controls */}
-      <div className="comm-slider-controls">
-        <div className="comm-slider-dots">
-          {blogs.map((_, i) => (
-            <button key={i} className={`comm-slider-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} aria-label={`Go to story ${i + 1}`} />
+    <div className="comm-film-wrap">
+      <div style={{ overflow: "hidden" }}>
+        <div
+          ref={trackRef}
+          className="comm-film-track"
+          style={{ transition: "transform 0.55s cubic-bezier(0.4,0,0.2,1)" }}
+        >
+          {blogs.map((b) => (
+            <Link key={b.to} to={b.to} className="comm-film-card">
+              <div className="comm-film-card__img" style={{ background: b.imgBg }}>
+                {b.imgStyle?.objectFit === "contain" ? (
+                  <div className="comm-film-card__img-logo">
+                    <img src={b.img} alt={b.title} />
+                  </div>
+                ) : (
+                  <img src={b.img} alt={b.title} />
+                )}
+              </div>
+              <div className="comm-film-card__body">
+                <span className="comm-film-card__label">{b.label}</span>
+                <span className="comm-film-card__title">{b.title}</span>
+                <p className="comm-film-card__excerpt">{b.excerpt}</p>
+                <span className="comm-film-card__cta">Read the story →</span>
+              </div>
+            </Link>
           ))}
         </div>
-        <div className="comm-scroll-hint__arrows">
-          <button className="comm-scroll-hint__btn" onClick={() => goTo(current - 1)} disabled={current === 0}>←</button>
-          <button className="comm-scroll-hint__btn" onClick={() => goTo(current + 1)} disabled={current === blogs.length - 1}>→</button>
-        </div>
       </div>
-      {/* track */}
-      <div ref={scrollRef} className="comm-blog-scroll">
-        {blogs.map((b, i) => (
-          <Link key={b.to} to={b.to} className="comm-blog">
-            <div className="comm-blog__img" style={{ background: b.imgBg }}>
-              {b.img && <img src={b.img} alt={b.title} style={{ width: "100%", height: "100%", display: "block", ...b.imgStyle }} />}
-            </div>
-            <div className="comm-blog__body">
-              <span className="comm-blog__label">{b.label}</span>
-              <span className="comm-blog__title">{b.title}</span>
-              <p className="comm-blog__excerpt">{b.excerpt}</p>
-              <span className="comm-blog__cta">Read the story →</span>
-            </div>
-          </Link>
-        ))}
+      <div className="comm-film-controls">
+        <div className="comm-film-dots">
+          {blogs.map((_, i) => (
+            <button key={i} className={`comm-film-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} aria-label={`Story ${i + 1}`} />
+          ))}
+        </div>
+        <div className="comm-film-arrows">
+          <button className="comm-film-arrow" onClick={() => goTo(current - 1)} disabled={current === 0}>←</button>
+          <button className="comm-film-arrow" onClick={() => goTo(current + 1)} disabled={current === blogs.length - 1}>→</button>
+        </div>
       </div>
     </div>
   );
@@ -164,7 +170,7 @@ function HorizontalScroll({ filtered }) {
 }
 
 export default function Community() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  // community projects — no filter needed
 
   useEffect(() => {
     document.title = "Community — Mridul Pathak";
@@ -172,7 +178,7 @@ export default function Community() {
     m("name", "description", "Everything built has been for people who didn't have what they needed. The tournament, the drone, the platform — and the conversations that followed.");
   }, []);
 
-  const filtered = activeFilter === "all" ? allProjects : allProjects.filter(p => p.category === activeFilter);
+  const filtered = allProjects;
 
   return (
     <div className="comm">
@@ -199,7 +205,7 @@ export default function Community() {
         <Fade>
           <div className="section-label" style={{ marginBottom: "1.5rem" }}>// Three stories worth reading</div>
         </Fade>
-        <BlogScroll blogs={blogs} />
+        <FilmstripCarousel blogs={blogs} />
       </section>
 
       <div className="comm-rule" />
@@ -288,17 +294,7 @@ export default function Community() {
             <div className="section-label" style={{ marginBottom: "1.2rem" }}>// All work — filter by discipline</div>
           </Fade>
           <Fade delay={100}>
-            <div className="comm-filter-bar">
-              {filters.map(f => (
-                <button
-                  key={f}
-                  className={`comm-filter-btn${activeFilter === f ? " active" : ""}`}
-                  onClick={() => { setActiveFilter(f); }}
-                >
-                  {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)}
-                </button>
-              ))}
-            </div>
+    
           </Fade>
         </div>
 
