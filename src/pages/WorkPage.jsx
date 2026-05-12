@@ -11,7 +11,8 @@ const projectImages = {
   "04": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true  },
   "05": { src: "/ukhf-inaug.jpg",       bg: "#0A0A08", fit: "cover",   pad: false },
   "06": { src: null,                    bg: "#0A0A08", fit: "contain", pad: true  },
-  "07": { src: null,                    bg: "#1A1A18", fit: "contain", pad: true  },
+  "07": { src: null,                    bg: "#0A0A08", fit: "contain", pad: true  },
+  "08": { src: null,                    bg: "#1A1A18", fit: "contain", pad: true  },
 };
 
 const hooks = {
@@ -20,8 +21,9 @@ const hooks = {
   "03": "Because a forecast that helps a real business plan better is worth more than any grade.",
   "04": "Because the farmer who needs the technology most is the one nobody designed it for.",
   "05": "Because 1,000 people in those stands saw someone from their city decide it was worth doing — and that changes what people believe is possible.",
-  "06": "Because the same data tells three completely different stories depending on who you're designing for.",
-  "07": "Because 40% utilization in a perishable-goods operation isn't a number — it's money leaving the building every day.",
+  "06": "Because 60 days of emails, follow-ups, and waiting shouldn't be what stands between an F-1 student and their internship.",
+  "07": "Because the same data tells three completely different stories depending on who you're designing for.",
+  "08": "Because 40% utilization in a perishable-goods operation isn't a number — it's money leaving the building every day.",
 };
 
 const detailRoutes = {
@@ -30,8 +32,9 @@ const detailRoutes = {
   "03": "/work/nightingale",
   "04": "/work/krishi",
   "05": "/work/hoops",
-  "06": "/work/nba",
-  "07": "/work/pfg",
+  "06": "/work/globalintern",
+  "07": "/work/nba",
+  "08": "/work/pfg",
 };
 
 const filteredProjects = [
@@ -42,6 +45,7 @@ const filteredProjects = [
   { id: "krishi",     name: "Krishi Drone",       category: "Product",   brief: "Agri-tech startup. UPES incubator accepted. Farmer-first go-to-market.", year: "2024", route: "/work/krishi",     report: true },
   { id: "hoops",      name: "Hoops Fest",         category: "Operations",brief: "3-day tournament. 1,000+ attendees. 7 sponsors. Indian Air Force teams.", year: "2024", route: "/work/hoops",      report: false },
   { id: "nba",        name: "NBA Data Visualization",category: "Analytics", brief: "Same dataset. Three infographics for three different audience personas. Persona mapping, color psychology, narrative design.", year: "2026", route: "/work/nba",        report: false },
+  { id: "globalintern", name: "GlobalIntern",            category: "Analytics", brief: "19-table Oracle Apex database centralizing F-1 CPT/OPT authorization. 3NF schema, disjoint subtypes, 5 SQL queries. Built from personal experience.", year: "2026", route: "/work/globalintern", report: false },
 ];
 
 const filterCategories = ["All", "Analytics", "Strategy", "Product", "Operations"];
@@ -138,6 +142,12 @@ export default function WorkPage() {
                       }}
                     />
                   ) : p.num === "06" ? (
+                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.6rem", padding: "2rem" }}>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem,5vw,5rem)", color: "var(--red)", lineHeight: 1 }}>19</span>
+                      <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(242,239,232,0.25)" }}>tables</span>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem,2vw,1.4rem)", color: "rgba(242,239,232,0.12)", lineHeight: 1.2, textAlign: "center", marginTop: "0.5rem" }}>F-1 Authorization<br/>Platform</span>
+                    </div>
+                  ) : p.num === "07" ? (
                     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.8rem", padding: "2rem" }}>
                       <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "rgba(242,239,232,0.15)", lineHeight: 1, textAlign: "center" }}>The Invisible Star</span>
                       <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "rgba(192,57,43,0.5)", lineHeight: 1, textAlign: "center" }}>ROI on the Court</span>

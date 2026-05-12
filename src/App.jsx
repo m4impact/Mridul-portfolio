@@ -19,6 +19,7 @@ import CraftevePage from "./pages/projects/CraftevePage";
 import NightingalePage from "./pages/projects/NightingalePage";
 import PFGPage from "./pages/projects/PFGPage";
 import NBAPage from "./pages/projects/NBAPage";
+import GlobalInternPage from "./pages/projects/GlobalInternPage";
 import HoopsBlog from "./pages/blog/HoopsBlog";
 import MATBlog from "./pages/blog/MATBlog";
 import KrishiBlog from "./pages/blog/KrishiBlog";
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/work/nightingale" element={<NightingalePage />} />
         <Route path="/work/pfg" element={<PFGPage />} />
         <Route path="/work/nba" element={<NBAPage />} />
+        <Route path="/work/globalintern" element={<GlobalInternPage />} />
         <Route path="/skills" element={<SkillsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
