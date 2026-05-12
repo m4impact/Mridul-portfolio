@@ -24,16 +24,6 @@ function Fade({ children, delay = 0, className = "" }) {
   );
 }
 
-function Credit({ value, label }) {
-  const [ref, visible] = useFadeIn();
-  return (
-    <div ref={ref} className={`comm-credit${visible ? " comm-fade--in" : ""}`}>
-      <span className="comm-credit__value">{value}</span>
-      <span className="comm-credit__label">{label}</span>
-    </div>
-  );
-}
-
 const blogs = [
   {
     to: "/community/hoops",
@@ -41,7 +31,7 @@ const blogs = [
     title: "The thing about building something before anyone asks you to.",
     excerpt: "Kashipur had basketball. It didn't have a stage. This is what I was thinking when I decided to build one — before anyone said it could exist.",
     img: "/hoops-champions.jpg",
-    imgStyle: { objectFit: "cover", objectPosition: "center top" },
+    imgStyle: { objectFit: "cover" },
     imgBg: "#0A0A08",
   },
   {
@@ -50,7 +40,7 @@ const blogs = [
     title: "Why I'm building a free market intelligence tool nobody asked for.",
     excerpt: "The founders who need market clarity most are the ones who can least afford to pay for it. MAT is my answer to that.",
     img: "/mat-logo.png",
-    imgStyle: { objectFit: "contain", padding: "3rem" },
+    imgStyle: { objectFit: "contain" },
     imgBg: "#0A0A08",
   },
   {
@@ -59,15 +49,29 @@ const blogs = [
     title: "The farmer asked why nobody built this earlier.",
     excerpt: "Most agri-tech is built for the farm that already has margin. This is about designing for the person everyone else forgot.",
     img: "/krishi-logo.png",
-    imgStyle: { objectFit: "contain", padding: "3rem" },
+    imgStyle: { objectFit: "contain" },
     imgBg: "#F2EFE8",
   },
 ];
 
-const allProjects = [
-  { id: "hoops",  name: "Uttarakhand Hoops Fest", brief: "3-day basketball tournament. 1,000+ attendees. Indian Air Force sent teams. 7 sponsors. Built from nothing in Kashipur.", year: "2024", route: "/work/hoops",  report: null },
-  { id: "mat",    name: "MAT — My Ambition Tool",  brief: "Free market intelligence platform for first-time founders. In development. Not a class project. Not affiliated with TMF.", year: "2026", route: "/work/mat",    report: null },
-  { id: "krishi", name: "Krishi Drone",             brief: "Agri-tech startup for Indian smallholder farmers. UPES incubator accepted. Farmer-first go-to-market model.", year: "2024", route: "/work/krishi", report: "/reports/krishi-drone-business-case.pdf" },
+// What I'm thinking about right now — update this periodically
+const realTalk = [
+  {
+    q: "What I'm working on",
+    a: "At TMF learning what product management actually looks like inside a real organisation — the gap between theory and what gets you from a decision to a shipped thing. At VCU finishing the quantitative foundation. Building MAT in the hours between.",
+  },
+  {
+    q: "What's on my mind",
+    a: "Why most tools built for early founders assume the founder already speaks the language. That assumption excludes the exact person who needs the tool most. MAT is my attempt to remove that assumption entirely.",
+  },
+  {
+    q: "What I'm figuring out",
+    a: "How to be genuinely useful to someone without making them dependent on you. The goal is always to leave the person clearer than I found them — not to become a recurring cost they can't step away from.",
+  },
+  {
+    q: "What I want to talk about",
+    a: "Markets that don't behave the way the textbook says they should. Ideas that seem too small to matter but turn out to be the whole thing. Problems where the data and the human story are pointing in different directions.",
+  },
 ];
 
 function FilmstripCarousel({ blogs }) {
@@ -126,12 +130,12 @@ function FilmstripCarousel({ blogs }) {
   );
 }
 
-function HorizontalScroll({ filtered }) {
+function HorizontalScroll({ projects }) {
   const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
 
   const goTo = (idx) => {
-    const next = Math.max(0, Math.min(idx, filtered.length - 1));
+    const next = Math.max(0, Math.min(idx, projects.length - 1));
     setCurrent(next);
     const card = scrollRef.current?.children[next];
     if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
@@ -141,26 +145,24 @@ function HorizontalScroll({ filtered }) {
     <div className="comm-slider-wrap">
       <div className="comm-slider-controls">
         <div className="comm-slider-dots">
-          {filtered.map((_, i) => (
-            <button key={i} className={`comm-slider-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} aria-label={`Go to project ${i + 1}`} />
+          {projects.map((_, i) => (
+            <button key={i} className={`comm-slider-dot${i === current ? " active" : ""}`} onClick={() => goTo(i)} />
           ))}
         </div>
         <div className="comm-scroll-hint__arrows">
           <button className="comm-scroll-hint__btn" onClick={() => goTo(current - 1)} disabled={current === 0}>←</button>
-          <button className="comm-scroll-hint__btn" onClick={() => goTo(current + 1)} disabled={current === filtered.length - 1}>→</button>
+          <button className="comm-scroll-hint__btn" onClick={() => goTo(current + 1)} disabled={current === projects.length - 1}>→</button>
         </div>
       </div>
-      <div ref={scrollRef} id="proj-scroll" className="comm-projects-scroll">
-        {filtered.map((p) => (
+      <div ref={scrollRef} className="comm-projects-scroll">
+        {projects.map((p) => (
           <Link key={p.id} to={p.route} className="comm-project-card">
             <span className="comm-project-card__category">{p.category}</span>
             <span className="comm-project-card__name">{p.name}</span>
             <p className="comm-project-card__brief">{p.brief}</p>
             <div className="comm-project-card__meta">
               <span className="comm-project-card__year">{p.year}</span>
-              <span className="comm-project-card__cta">
-                {p.report ? "Report available →" : "View project →"}
-              </span>
+              <span className="comm-project-card__cta">{p.report ? "Report available →" : "View project →"}</span>
             </div>
           </Link>
         ))}
@@ -170,20 +172,16 @@ function HorizontalScroll({ filtered }) {
 }
 
 export default function Community() {
-  // community projects — no filter needed
-
   useEffect(() => {
     document.title = "Community — Mridul Pathak";
     const m = (a, k, v) => { let el = document.querySelector(`meta[${a}="${k}"]`); if (!el) { el = document.createElement("meta"); el.setAttribute(a, k); document.head.appendChild(el); } el.setAttribute("content", v); };
-    m("name", "description", "Everything built has been for people who didn't have what they needed. The tournament, the drone, the platform — and the conversations that followed.");
+    m("name", "description", "Everything built has been for people who didn't have what they needed. Three stories. A real talk. An open door.");
   }, []);
-
-  const filtered = allProjects;
 
   return (
     <div className="comm">
 
-      {/* OPENING */}
+      {/* ── OPENING ── */}
       <section className="comm-opening">
         <div className="comm-opening__eyebrow"><span>// 007</span><span>·</span><span>BEYOND THE BRIEF</span></div>
         <h1 className="comm-opening__line comm-opening__line--1">Everything</h1>
@@ -194,121 +192,48 @@ export default function Community() {
         <h1 className="comm-opening__line comm-opening__line--6">didn't have</h1>
         <h1 className="comm-opening__line comm-opening__line--7">what they needed.</h1>
         <Fade className="comm-opening__sub" delay={900}>
-          <p>The tournament was for athletes in a city that didn't see them. The drone was for farmers no one was designing for. MAT is for founders who can't afford the table. Click into any of these to read the full story — the decision-making, the doubts, and what actually happened.</p>
+          <p>Three stories below. Each one is about who it was actually for — not what I built. After the stories, a real talk. And at the end, an open door.</p>
         </Fade>
       </section>
 
-      <div className="comm-rule" />
+      {/* ── FILMSTRIP ── */}
+      <Fade>
+        <div style={{ padding: "0 0 0.5rem" }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.28, padding: "2rem 3.5rem 1rem" }}>// Three stories worth reading</div>
+        </div>
+      </Fade>
+      <FilmstripCarousel blogs={blogs} />
 
-      {/* THREE MAJESTIC BLOG SHOWCASES */}
-      <section className="comm-section">
+      {/* ── REAL TALK ── */}
+      <section className="comm-real-talk">
         <Fade>
-          <div className="section-label" style={{ marginBottom: "1.5rem" }}>// Three stories worth reading</div>
+          <div className="comm-real-talk__label">// Real talk</div>
+          <h2 className="comm-real-talk__heading">Where I actually am<br />right now.</h2>
+          <p className="comm-real-talk__intro">Not the polished version. What's actually on my mind, what I'm figuring out, and what I want to talk about.</p>
         </Fade>
-        <FilmstripCarousel blogs={blogs} />
-      </section>
 
-      <div className="comm-rule" />
-
-      {/* KASHIPUR NARRATIVE */}
-      <section className="comm-section">
-        <Fade><div className="comm-location">Kashipur in March.</div></Fade>
-        <Fade delay={120}><div className="comm-standalone">The stands filled before the first game started.</div></Fade>
-        <Fade className="comm-body">
-          <p>That doesn't happen unless something in the air already feels different — unless the people arriving sense that this time, someone actually means it.</p>
-        </Fade>
-        <Fade className="comm-body comm-body--spaced">
-          <p>So I built it. No institution. No permission. A belief that if you make something real enough, the right people will feel it and arrive.</p>
-        </Fade>
-        <Fade className="comm-impact-line">The Indian Air Force sent teams.</Fade>
-        <Fade delay={120} className="comm-impact-line">A news channel came twice — before the event and on the day itself.</Fade>
-        <Fade className="comm-photo comm-photo--full">
-          <img src="/hoops-champions.jpg" alt="Uttarakhand Hoops Fest champions — Kashipur, March 2024" />
-        </Fade>
-        <Fade className="comm-body comm-body--italic">
-          <p>I think about what that felt like for the athletes. To finally be in a room that was made for them.</p>
-        </Fade>
-        <div className="comm-credits">
-          <Credit value="1,000+" label="People in the stands" />
-          <Credit value="7" label="Sponsors secured" />
-          <Credit value="2" label="News stories" />
-        </div>
-        <Fade className="comm-pullquote">
-          <blockquote>The show didn't start with a full house. It started with a decision: build the thing before anyone tells you it can exist.</blockquote>
-        </Fade>
-      </section>
-
-      <div className="comm-rule" />
-
-      {/* FARMER'S QUESTION */}
-      <section className="comm-section">
-        <Fade><div className="comm-location">The farmer's question.</div></Fade>
-        <Fade className="comm-body">
-          <p>That question — <em>who is this actually for</em> — is the one I keep returning to. It's what made the Krishi Drone project matter. Most agri-technology is built for the farm that already has margin. The farmer I was thinking about had two acres and one good season to get it right.</p>
-        </Fade>
-        <Fade className="comm-quote-alone">
-          <p>"Then why didn't anyone build this earlier?"</p>
-          <cite>— A farmer in Uttarakhand, 2024</cite>
-        </Fade>
-        <Fade className="comm-body comm-body--italic">
-          <p>I didn't have an answer. That was the answer.</p>
-        </Fade>
-        <div className="comm-pillars">
-          <Fade className="comm-pillar"><span className="comm-pillar__value">UPES</span><span className="comm-pillar__label">Incubator acceptance</span></Fade>
-          <div className="comm-pillar-rule" />
-          <Fade delay={100} className="comm-pillar"><span className="comm-pillar__value">Farmer-first</span><span className="comm-pillar__label">Go-to-market position</span></Fade>
-          <div className="comm-pillar-rule" />
-          <Fade delay={200} className="comm-pillar"><span className="comm-pillar__value">Seasonal</span><span className="comm-pillar__label">Cash flow model</span></Fade>
-        </div>
-      </section>
-
-      <div className="comm-rule" />
-
-      {/* MAT */}
-      <section className="comm-section">
-        <Fade><div className="comm-location">The same person.<br />Different rooms.</div></Fade>
-        <Fade className="comm-body">
-          <p>MAT exists because I kept meeting the same person in different rooms. Motivated. Clear-eyed. With an idea that deserved to exist — and no way to build the analytical case for it without spending money they didn't have.</p>
-        </Fade>
-        <Fade className="comm-impact-line">Not a class project.</Fade>
-        <Fade delay={100} className="comm-impact-line">Not a side hustle.</Fade>
-        <Fade delay={200} className="comm-impact-line">The thing I am building because the need is still there.</Fade>
-        <div className="comm-pillars">
-          <Fade className="comm-pillar"><span className="comm-pillar__value">Free</span><span className="comm-pillar__label">By intention</span></Fade>
-          <div className="comm-pillar-rule" />
-          <Fade delay={100} className="comm-pillar"><span className="comm-pillar__value">Plain language</span><span className="comm-pillar__label">From the ground up</span></Fade>
-          <div className="comm-pillar-rule" />
-          <Fade delay={200} className="comm-pillar"><span className="comm-pillar__value">Early build</span><span className="comm-pillar__label">Honest current status</span></Fade>
-        </div>
-        <Fade className="comm-body comm-body--spaced">
-          <p>TMF is where I work as a Product Manager. MAT is what I'm building because the workday ends and the need doesn't.</p>
-        </Fade>
-      </section>
-
-      <div className="comm-rule" />
-
-      {/* FILTERED PROJECTS — horizontal scroll */}
-      <section className="comm-section" style={{ maxWidth: "none", paddingLeft: 0, paddingRight: 0 }}>
-        <div style={{ padding: "0 3.5rem" }}>
-          <Fade>
-            <div className="section-label" style={{ marginBottom: "1.2rem" }}>// All work — filter by discipline</div>
-          </Fade>
-          <Fade delay={100}>
-    
-          </Fade>
+        <div className="comm-real-talk__grid">
+          {realTalk.map(({ q, a }, i) => (
+            <Fade key={i} delay={i * 80} className="comm-real-talk__item">
+              <div className="comm-real-talk__q">{q}</div>
+              <p className="comm-real-talk__a">{a}</p>
+            </Fade>
+          ))}
         </div>
 
-        <HorizontalScroll filtered={filtered} />
+        <Fade delay={200} className="comm-real-talk__footer">
+          <p>This section gets updated. If something here is months old, reach out and I'll tell you what's changed.</p>
+        </Fade>
       </section>
 
-      {/* CLOSE */}
+      {/* ── CLOSE ── */}
       <section className="comm-close">
         <Fade><div className="comm-close__eyebrow">// If this page landed for you</div></Fade>
         <Fade delay={200}>
           <h2 className="comm-close__heading">Reach out if you want<br />to talk through a<br />real problem.</h2>
         </Fade>
         <Fade delay={400} className="comm-close__sub">
-          <p>If something on this page sounded like your situation — whether you are building, trying to understand a market, or looking for someone who operates by solving real gaps — this is for you.</p>
+          <p>If something on this page sounded like your situation — whether you are building, trying to understand a market, or just looking for someone who will actually engage with what you're working on — this is for you.</p>
           <p className="comm-close__not-a-form">Not a form. Not a pitch. Just a way in.</p>
         </Fade>
         <Fade delay={600}>
