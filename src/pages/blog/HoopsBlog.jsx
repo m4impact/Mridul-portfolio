@@ -9,70 +9,141 @@ export default function HoopsBlog() {
 
   return (
     <div className="page-wrap">
-      <div className="page-hero">
+      <div className="page-hero" style={{ borderBottom: "3px solid var(--ink)", paddingBottom: "4rem" }}>
         <div className="page-hero__eyebrow">// Blog · Community · Feb 2024</div>
-        <h1 className="page-hero__title" style={{ fontSize: "clamp(3rem,8vw,8rem)" }}>The thing about building something<br />before anyone asks you to.</h1>
-        <p className="page-hero__sub">Uttarakhand Hoops Fest — what I was thinking, what I did, and what actually happened.</p>
-        <span className="page-hero__divider-label">Hoops Fest · 2024</span>
+        <h1 className="page-hero__title" style={{ fontSize: "clamp(2.8rem,7vw,8rem)", lineHeight: 0.88 }}>
+          The court had<br />potholes.<br /><span style={{ color: "var(--red)" }}>We played on it anyway.</span>
+        </h1>
+        <p className="page-hero__sub" style={{ maxWidth: "520px" }}>
+          What it took to build a basketball tournament in a city full of talent that nobody was watching — and why staying independent was the whole point.
+        </p>
       </div>
 
       <div className="blog-wrap">
         <div className="blog-meta reveal">
-          <span>Mridul Pathak</span>
-          <span>·</span>
-          <span>Kashipur, Uttarakhand</span>
-          <span>·</span>
-          <span>March 2024</span>
-          <span>·</span>
-          <span>8 min read</span>
+          <span>Mridul Pathak</span><span>·</span>
+          <span>Kashipur, Uttarakhand</span><span>·</span>
+          <span>2024 → Ongoing</span><span>·</span>
+          <span>10 min read</span>
         </div>
 
-        <div className="blog-hero-img reveal">
-          <img src="/hoops-champions.jpg" alt="Uttarakhand Hoops Fest — Champions" />
+        {/* OPENING — full bleed champions photo */}
+        <div className="blog-hero-img reveal" style={{ marginBottom: "3.5rem" }}>
+          <img src="/hoops-champions.jpg" alt="Uttarakhand Hoops Fest — Champions, Kashipur 2024" />
           <div className="blog-hero-caption">Champions receive ₹51,000 prize · Kashipur · March 2024</div>
         </div>
 
         <div className="blog-body">
 
-          <p className="blog-lede reveal">I had no blueprint. No institution behind me. No guarantee that anyone would show up. What I had was a city full of athletes who had been serious about basketball for years and had nowhere to be taken seriously.</p>
-
-          <h2 className="blog-h2 reveal">What I saw</h2>
-          <p className="reveal">Kashipur is a Tier-3 city in Uttarakhand. Basketball exists there — has always existed there. Players who wake up early, who practise in the heat, who are genuinely good at what they do. But there was no stage. No event that made coaches, sponsors, or families believe there was something at stake beyond a weekend.</p>
-          <p className="reveal">I had been watching this gap for a while before I did anything about it. The question I kept asking myself was: who is supposed to build this? And the answer kept coming back uncomfortable. Nobody was coming. If it was going to exist, I was going to have to decide it was worth doing and then actually do it.</p>
-
-          <h2 className="blog-h2 reveal">The decision to start</h2>
-          <p className="reveal">The first real decision was not about logistics or sponsorship or venues. It was about whether I believed the problem was real enough to justify the risk of being wrong in public. Building something that nobody shows up to is a particular kind of failure — visible, personal, and hard to explain away.</p>
-          <p className="reveal">I decided the problem was real. I decided that even if the turnout was small the first year, the thing would be more real than the nothing that existed before it. That was enough to start.</p>
-          <p className="reveal">I did not have a team. I did not have a budget. I had a belief that if you make something real enough, the right people will feel it and arrive.</p>
-
-          <div className="blog-pullquote reveal">
-            <blockquote>The show did not start with a full house. It started with a decision: build the thing before anyone tells you it can exist.</blockquote>
+          {/* PULL QUOTE — opens the narrative */}
+          <div className="blog-pullquote reveal" style={{ marginBottom: "3rem", marginTop: 0 }}>
+            <blockquote>I've played basketball my whole life. For my school. My college. My city. My state. I know what this game does to people who love it — and I know what happens when the people running it forget that.</blockquote>
           </div>
 
-          <h2 className="blog-h2 reveal">What I actually did</h2>
-          <p className="reveal">Sponsorship outreach before I had anything to show was humbling. The pitch was essentially: there is a gap, I am going to close it, here is why that matters to your brand. Some said no. Some did not respond. Seven said yes — in-kind, monetary, and everything in between.</p>
-          <p className="reveal">Logistics of a 3-day event with multiple teams, a prize structure, and a news channel watching is not something you can plan perfectly in advance. You plan what you can and then you solve problems faster than they accumulate. That is the real skill the Hoops Fest taught me — not project management in the textbook sense, but decision-making velocity under real conditions.</p>
-          <p className="reveal">The Indian Air Force sent teams. When that happened I understood that the event had crossed a threshold. Institutions do not send their athletes to things that are not real. Their presence was the signal that what we had built had become legitimate.</p>
+          {/* SECTION 1 — the court */}
+          <h2 className="blog-h2 reveal">The court</h2>
+          <p className="reveal">It was cemented and outdoor. Potholes across the surface — the kind you learn to remember the location of so you don't catch your ankle on a cut. If you fell, you got back up with something missing from your skin. The markings had worn off years ago. One ring was broken. The other worked.</p>
+          <p className="reveal">We played on it every evening. Three, sometimes four hours. Me and the same group of people, in the same city, with the same amount of talent that nobody outside that court was paying attention to.</p>
 
-          <h2 className="blog-h2 reveal">What happened</h2>
-          <p className="reveal">1,000 people sat in those stands. A local news channel came twice — before the event and on the day itself. We broke even in year one. The 2026 edition is in planning with an expanded format and regional teams.</p>
-          <p className="reveal">But the thing I think about most is not the number. It is what 1,000 people in the stands of a Tier-3 city means for every athlete who competed. They were seen. The city showed up for them. Someone from their own city decided it was worth doing — and then did it.</p>
-          <p className="reveal">That changes what people believe is possible. That is not something you can put in a report.</p>
+          {/* VISUAL BREAK — stat that stops the reader */}
+          <div className="reveal" style={{ margin: "3rem 0", padding: "2.5rem", background: "var(--ink)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px" }}>
+            {[
+              { n: "Daily", sub: "3–4 hours on that court" },
+              { n: "Every age", sub: "Players from school to working adults" },
+              { n: "One ring", sub: "The other was broken" },
+              { n: "Zero", sub: "Institutional support" },
+            ].map(({ n, sub }) => (
+              <div key={sub} style={{ padding: "1.5rem", borderRight: "1px solid rgba(242,239,232,0.08)", borderBottom: "1px solid rgba(242,239,232,0.08)" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.6rem)", color: "var(--red)", lineHeight: 1 }}>{n}</div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.48rem", letterSpacing: "0.1em", color: "rgba(242,239,232,0.35)", marginTop: "0.4rem", lineHeight: 1.7 }}>{sub}</div>
+              </div>
+            ))}
+          </div>
 
-          <h2 className="blog-h2 reveal">What I learned about decision-making</h2>
-          <p className="reveal">The most important decision I made was the first one: to believe the problem was real before I had any evidence that the solution would work. Every subsequent decision — sponsors, venue, format, prize structure — was downstream of that one.</p>
-          <p className="reveal">I also learned that execution is where almost everything fails. The gap between planning something and actually doing it is where most ideas die. Not because the idea was wrong. Because the person with the idea waited for conditions that never arrived.</p>
-          <p className="reveal">The conditions you need are not the ones you are waiting for. The condition you need is the decision to start.</p>
+          {/* SECTION 2 — the real problem */}
+          <h2 className="blog-h2 reveal">What I was actually watching</h2>
+          <p className="reveal">Basketball in India is not a small community. It's large, it's growing, and it has serious talent. What it also has is a problem that anyone who has been inside it long enough knows — a political structure where who you know matters more than how you play.</p>
+          <p className="reveal">I watched talented players stop pursuing the game. Not because they lost the love for it. Because the environment around it made them feel like the path forward wasn't available to them unless they were connected to the right people. References over results. Relationships over skill. The court was one of the few places that was still honest.</p>
+          <p className="reveal">I wanted to do something about the gap. Not talk about it — do something about it. Something that brought the community together around the game itself, without the politics, without the gatekeeping. Something that reminded players — especially young ones — that there was a future in this if they wanted it.</p>
+
+          {/* VISUAL BREAK — the tension as a line */}
+          <div className="reveal" style={{ margin: "2.5rem 0", borderLeft: "2px solid var(--red)", paddingLeft: "1.5rem" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300, fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: "var(--ink)", lineHeight: 1.65, margin: 0 }}>
+              People approached me during the process and said I should join their organisation if I wanted to make this happen. I didn't. The moment I was affiliated with one side, I couldn't unite the others. Independence wasn't stubbornness — it was the whole strategy.
+            </p>
+          </div>
+
+          {/* SECTION 3 — the phone call */}
+          <h2 className="blog-h2 reveal">The call that changed the scale</h2>
+          <p className="reveal">There's a moment in building anything when you find out whether the idea has weight. For me that moment was a phone call.</p>
+          <p className="reveal">I reached out to the former captain of the Indian national basketball team — who is now the captain of the Indian Air Force basketball team. I explained what I was trying to do. A tournament in Kashipur. Community-driven. No political affiliation. Built to show young players in the city that there was a real path forward if they committed to the game.</p>
+          <p className="reveal">He said he'd be there. He didn't ask what organisation I was with. He didn't ask about the prize money. He said the cause was right and he'd be there for it.</p>
+
+          {/* VISUAL — full width ceremony photo */}
+          <div className="reveal" style={{ margin: "2.5rem 0", overflow: "hidden" }}>
+            <img src="/hoops-ceremony.jpg" alt="Opening ceremony — Uttarakhand Hoops Fest" style={{ width: "100%", display: "block", filter: "grayscale(10%) sepia(8%)" }} />
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.1em", color: "rgba(10,10,8,0.28)", marginTop: "0.6rem" }}>Opening ceremony · Kashipur · March 2024</div>
+          </div>
+
+          <p className="reveal">That changed everything. Not just logistically — psychologically. When the Indian Air Force team shows up to your tournament, the message it sends to every student watching is: this is real. People who have careers in this sport, who drew a salary from it, who wore a uniform for it — they came here. To your city. For this court. For you.</p>
+
+          {/* PULLQUOTE */}
+          <div className="blog-pullquote reveal">
+            <blockquote>The moment I had political pressure to join an organisation, I knew I was doing something right. You only get asked to be controlled when what you're building can't be ignored.</blockquote>
+          </div>
+
+          {/* SECTION 4 — building from scratch */}
+          <h2 className="blog-h2 reveal">Building it from the ground up</h2>
+          <p className="reveal">The team I used to play with every evening became the team that built the event. The same people who knew every pothole on that court were the ones who fixed it, marked it, set it up for competition. There's something about that I still think about — the people closest to the problem were the ones who solved it.</p>
+          <p className="reveal">We ran workshops with local schools. Went into classrooms and talked about sport — not as a hobby, but as a structure for life. About players who had gotten employment in the Indian Air Force, Indian Railways, private universities. About what it meant to have a salary, a designation, a job that came from committing to a game. Parents started sending their children for coaching at the government-authorised stadium where we held the event.</p>
+          <p className="reveal">Before the event, that stadium wasn't maintained. People weren't there. After the workshops, after the tournament, there were children of all ages using it. The infrastructure that existed but had been abandoned — suddenly had people in it.</p>
+
+          {/* TWO COLUMN PHOTO */}
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", margin: "2.5rem 0" }}>
+            <div>
+              <img src="/hoops-opening.jpg" alt="Inauguration" style={{ width: "100%", display: "block", filter: "grayscale(10%) sepia(8%)", height: "280px", objectFit: "cover", objectPosition: "center top" }} />
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.08em", color: "rgba(10,10,8,0.28)", marginTop: "0.5rem" }}>Inauguration ceremony</div>
+            </div>
+            <div>
+              <img src="/hoops-champions.jpg" alt="Champions" style={{ width: "100%", display: "block", filter: "grayscale(10%) sepia(8%)", height: "280px", objectFit: "cover", objectPosition: "center top" }} />
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.08em", color: "rgba(10,10,8,0.28)", marginTop: "0.5rem" }}>Champions receive prize</div>
+            </div>
+          </div>
+
+          {/* SECTION 5 — what it meant */}
+          <h2 className="blog-h2 reveal">What 1,000 people in the stands actually means</h2>
+          <p className="reveal">The number matters less than what it represents. A Tier-3 city in Uttarakhand. An outdoor cemented court with potholes that we fixed ourselves. Seven sponsors who believed the cause was worth backing. A former national team captain who drove there because the right thing was happening.</p>
+          <p className="reveal">1,000 people chose to show up. In a city where talented players had spent years feeling like the game didn't have space for them, the city showed up for the game.</p>
+          <p className="reveal">A local news channel covered it twice — before the event and on the day. That doesn't happen unless what you're building has broken through something.</p>
+
+          {/* CLOSING STAT ROW */}
+          <div className="reveal" style={{ margin: "3rem 0", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(10,10,8,0.08)", border: "1px solid rgba(10,10,8,0.08)" }}>
+            {[
+              { n: "1,000+", sub: "People in the stands" },
+              { n: "7", sub: "Sponsors secured" },
+              { n: "₹51,000", sub: "Prize pool" },
+            ].map(({ n, sub }) => (
+              <div key={sub} style={{ background: "var(--paper)", padding: "2rem 1.6rem" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3.5rem)", color: "var(--ink)", lineHeight: 1 }}>{n}</div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.48rem", letterSpacing: "0.1em", color: "rgba(10,10,8,0.32)", marginTop: "0.4rem", textTransform: "uppercase" }}>{sub}</div>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="blog-h2 reveal">What comes next</h2>
+          <p className="reveal">2026 edition is in planning. Expanded format. Regional teams. The stadium that was empty before is now full of children training. That's the actual outcome — not the event, but what the event made possible after it ended.</p>
+          <p className="reveal">The court still has some potholes. We'll fix those too.</p>
 
         </div>
 
+        {/* Press section */}
         <div className="blog-press reveal">
           <h2 className="blog-h2">In the press.</h2>
-          <p className="reveal" style={{ marginBottom: "1.5rem" }}>A local news channel covered the event twice — before and on the day. That doesn't happen unless something real is being built.</p>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.54rem", color: "rgba(10,10,8,0.42)", lineHeight: 1.85, marginBottom: "1.5rem" }}>A local news channel came twice. Before the event and on the day itself. That doesn't happen unless something real is being built.</p>
           <div className="press-grid">
             <div className="press-card">
               <div className="press-video">
-                <iframe src="https://www.youtube.com/embed/NaBxIBpsMDE" title="Uttarakhand Hoops Fest — pre-event press conference" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+                <iframe src="https://www.youtube.com/embed/NaBxIBpsMDE" title="Pre-event press conference" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
               </div>
               <div className="press-card-body">
                 <div className="press-card-label">Pre-event · Press Conference</div>
@@ -81,7 +152,7 @@ export default function HoopsBlog() {
             </div>
             <div className="press-card">
               <div className="press-video">
-                <iframe src="https://www.youtube.com/embed/UuKnFZZl_vs?start=170" title="Uttarakhand Hoops Fest — event day coverage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+                <iframe src="https://www.youtube.com/embed/UuKnFZZl_vs?start=170" title="Event day coverage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
               </div>
               <div className="press-card-body">
                 <div className="press-card-label">Event Day · News Coverage</div>
