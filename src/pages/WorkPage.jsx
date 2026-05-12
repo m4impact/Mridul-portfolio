@@ -110,7 +110,7 @@ const timelines = {
   "05": { date: "Oct – Dec 2024",       type: "complete" },
   "06": { date: "Jan 2024 → Current",   type: "active" },
   "07": { date: "Jan – May 2026",       type: "complete" },
-  "08": { date: "Oct – Dec 2025",       type: "complete" },
+  "08": { date: "Jan – May 2026",       type: "complete" },
 };
 
 export default function WorkPage() {
