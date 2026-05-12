@@ -156,6 +156,10 @@ export default function AboutPage() {
             <p>I'm not here to give you an answer and walk away. I'm here to make sure you understand your situation well enough that you don't need me anymore — and you reach back out anyway, because the conversation was worth having.</p>
           </div>
 
+          <p className="reveal d3" style={{ fontFamily:"var(--font-mono)", fontSize:"0.54rem", color:"rgba(10,10,8,0.38)", lineHeight:1.9, letterSpacing:"0.04em", marginTop:"0.5rem" }}>
+            Also open to research conversations — particularly at the intersection of data, communication, and how people make decisions.
+          </p>
+
           <div className="rule reveal" />
 
           <div className="facts-grid reveal">
@@ -163,7 +167,7 @@ export default function AboutPage() {
             <div className="fact-item"><div className="fact-label">Degree</div><div className="fact-value">MDA <span className="sub">· VCU '26</span></div></div>
             <div className="fact-item"><div className="fact-label">Undergrad</div><div className="fact-value">B.A. Econ <span className="sub">· Delhi</span></div></div>
             <div className="fact-item"><div className="fact-label">Status</div><div className="fact-value" style={{ fontSize: ".85rem", color: "var(--red)" }}>CPT / OPT Ready</div></div>
-            <div className="fact-item"><div className="fact-label">Activities</div><div className="fact-value" style={{ fontSize: ".82rem" }}>AMA <span className="sub">· Gamma Iota Sigma</span></div></div>
+            <div className="fact-item"><div className="fact-label">Activities</div><div className="fact-value" style={{ fontSize: ".82rem" }}>AMA <span className="sub">· Gamma Iota Sigma · MKTG-678</span></div></div>
             <div className="fact-item"><div className="fact-label">Building</div><div className="fact-value" style={{ fontSize: "1rem", color: "var(--red)" }}>MAT</div></div>
           </div>
 
