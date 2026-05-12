@@ -107,7 +107,7 @@ const timelines = {
   "02": { date: "Oct – Dec 2025",       type: "complete" },
   "03": { date: "Oct – Dec 2025",       type: "complete" },
   "04": { date: "Oct – Dec 2025",       type: "complete" },
-  "05": { date: "Oct – Dec 2024",       type: "complete" },
+  "05": { date: "Jan 2024 → Current",   type: "active" },
   "06": { date: "Jan 2024 → Current",   type: "active" },
   "07": { date: "Jan – May 2026",       type: "complete" },
   "08": { date: "Jan – May 2026",       type: "complete" },
