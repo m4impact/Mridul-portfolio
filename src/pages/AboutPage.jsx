@@ -182,10 +182,10 @@ export default function AboutPage() {
           <div className="bio-grid reveal" style={{ marginTop: "4rem" }}>
             <div>{bio.map((p, i) => <p key={i} style={{ transitionDelay: `${i * .08}s` }}>{p}</p>)}</div>
             <div className="headshot-wrap">
-              <img src="/mridul-headshot.jpg" alt="Mridul Pathak — Uttarakhand Hoops Fest press conference" />
+              <img src="/mridul-headshot.jpg" alt="Mridul Pathak — Product Manager, Decision Analytics" />
               <div className="headshot-caption">
-                <div className="cap-label">Press Conference</div>
-                <div className="cap-sub">Uttarakhand Hoops Fest · March 2024</div>
+                <div className="cap-label">Mridul Pathak</div>
+                <div className="cap-sub">PM · TMF · Richmond, VA · 2026</div>
               </div>
             </div>
           </div>
