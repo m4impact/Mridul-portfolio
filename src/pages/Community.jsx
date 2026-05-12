@@ -82,7 +82,7 @@ function FilmstripCarousel({ blogs }) {
     const next = Math.max(0, Math.min(idx, blogs.length - 1));
     setCurrent(next);
     if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(-${next * 100}%)`;
+      trackRef.current.style.transform = `translateX(-${next * 33.333}%)`;
     }
   };
 

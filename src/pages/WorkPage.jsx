@@ -8,27 +8,27 @@ const projectImages = {
   "01": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true  },
   "02": { src: "/crafteve-logo.png",    bg: "#F5F0E8", fit: "contain", pad: true  },
   "03": { src: "/nightingale-logo.png", bg: "#F5EDE0", fit: "contain", pad: true  },
-  "04": { src: null,                    bg: "#1A1A18", fit: "contain", pad: true  },
-  "05": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true  },
-  "06": { src: "/ukhf-inaug.jpg",       bg: "#0A0A08", fit: "cover",   pad: false },
+  "04": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true  },
+  "05": { src: "/ukhf-inaug.jpg",       bg: "#0A0A08", fit: "cover",   pad: false },
+  "06": { src: null,                    bg: "#1A1A18", fit: "contain", pad: true  },
 };
 
 const hooks = {
   "01": "Because the founders who need market clarity most are the ones who can least afford to pay for it.",
   "02": "Because the right answer to 'should I expand?' isn't yes or no — it's a framework that makes the decision survivable either way.",
   "03": "Because a forecast that helps a real business plan better is worth more than any grade.",
-  "04": "Because 40% utilization in a perishable-goods operation isn't a number — it's money leaving the building every day.",
-  "05": "Because the farmer who needs the technology most is the one nobody designed it for.",
-  "06": "Because 1,000 people in those stands saw someone from their city decide it was worth doing — and that changes what people believe is possible.",
+  "04": "Because the farmer who needs the technology most is the one nobody designed it for.",
+  "05": "Because 1,000 people in those stands saw someone from their city decide it was worth doing — and that changes what people believe is possible.",
+  "06": "Because 40% utilization in a perishable-goods operation isn't a number — it's money leaving the building every day.",
 };
 
 const detailRoutes = {
   "01": "/work/mat",
   "02": "/work/crafteve",
   "03": "/work/nightingale",
-  "04": "/work/pfg",
-  "05": "/work/krishi",
-  "06": "/work/hoops",
+  "04": "/work/krishi",
+  "05": "/work/hoops",
+  "06": "/work/pfg",
 };
 
 const filteredProjects = [

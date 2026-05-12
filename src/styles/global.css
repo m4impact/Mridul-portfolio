@@ -1706,12 +1706,13 @@ nav.scrolled .nav-links button {
 
 .comm-film-track {
   display: flex;
-  overflow: hidden;
+  overflow: visible;
   margin: 22px 0;
+  width: 300%;
 }
 .comm-film-card {
-  flex: 0 0 100%;
-  min-width: 100%;
+  flex: 0 0 33.333%;
+  min-width: 33.333%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 460px;
