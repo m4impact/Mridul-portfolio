@@ -91,8 +91,8 @@ export default function MATBlog() {
             </div>
           </div>
 
-          <h2 className="blog-h2 reveal">Why I'm building this while working at TMF</h2>
-          <p className="reveal">TMF is where I work as a Product Manager. I'm learning what it means to take something from decision to shipped inside a real organisation. That's irreplaceable. But MAT exists in a different space — the space between when the workday ends and when the need for this tool disappears. Which is never.</p>
+          <h2 className="blog-h2 reveal">Why I'm building this alongside everything else</h2>
+          <p className="reveal">MAT exists in the space between when the workday ends and when the need for this tool disappears. Which is never.</p>
           <p className="reveal">Not a class project. Not a side hustle. The thing I'm building because I believe access to real, honest market intelligence should not be a privilege.</p>
 
           <div className="reveal" style={{ margin: "2rem 0", padding: "1.6rem 2rem", background: "var(--ink)" }}>
