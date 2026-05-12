@@ -5,12 +5,12 @@ import Footer from "../components/Footer";
 import { projects } from "../data/content";
 
 const projectImages = {
-  "01": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true },
-  "02": { src: "/crafteve-logo.png",    bg: "#F5F0E8", fit: "contain", pad: true },
-  "03": { src: "/nightingale-logo.png", bg: "#F5EDE0", fit: "contain", pad: true },
-  "04": { src: null,                    bg: "#E8E4DA", fit: "contain", pad: true },
-  "05": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true },
-  "06": { src: "/hoops-champions.jpg",  bg: "#0A0A08", fit: "cover",   pad: false },
+  "01": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true  },
+  "02": { src: "/crafteve-logo.png",    bg: "#F5F0E8", fit: "contain", pad: true  },
+  "03": { src: "/nightingale-logo.png", bg: "#F5EDE0", fit: "contain", pad: true  },
+  "04": { src: null,                    bg: "#1A1A18", fit: "contain", pad: true  },
+  "05": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true  },
+  "06": { src: "/ukhf-inaug.jpg",       bg: "#0A0A08", fit: "cover",   pad: false },
 };
 
 const hooks = {
@@ -134,8 +134,10 @@ export default function WorkPage() {
                       }}
                     />
                   ) : (
-                    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,4rem)", color: "rgba(10,10,8,0.12)", letterSpacing: "0.02em", textAlign: "center", padding: "1rem" }}>{p.name}</span>
+                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.5rem" }}>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,6vw,6rem)", color: "rgba(242,239,232,0.12)", lineHeight: 1 }}>40%</span>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,6vw,6rem)", color: "var(--red)", lineHeight: 1 }}>92%</span>
+                      <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.46rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(242,239,232,0.2)", marginTop: "0.5rem" }}>Freezer utilization</span>
                     </div>
                   )}
                   <div className="work-item__overlay" />
