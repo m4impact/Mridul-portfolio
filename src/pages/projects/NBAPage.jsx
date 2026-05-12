@@ -88,7 +88,13 @@ export default function NBAPage() {
           ))}
         </div>
 
-        <div style={{ marginTop:"4rem", paddingTop:"2rem", borderTop:"1px solid rgba(10,10,8,0.08)" }}>
+        <div className="proj-report reveal" style={{ marginTop:"4rem" }}>
+          <div className="proj-report__label">// Report</div>
+          <p className="proj-report__desc">Full project report — persona mapping, three infographic variants, 30+ documented design decisions, AI iteration process, and framework applications beyond basketball.</p>
+          <a href="/reports/nba-persona-report.pdf" target="_blank" rel="noopener noreferrer" className="proj-report__btn">Download Report ↓</a>
+        </div>
+
+        <div style={{ marginTop:"2rem", paddingTop:"2rem", borderTop:"1px solid rgba(10,10,8,0.08)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <Link to="/work" style={{ fontFamily:"var(--font-mono)", fontSize:".52rem", letterSpacing:".14em", textTransform:"uppercase", color:"rgba(10,10,8,.35)", textDecoration:"none" }}>← All Work</Link>
         </div>
       </div>
