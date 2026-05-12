@@ -1575,3 +1575,21 @@ nav.scrolled .nav-links button {
   .comm-blog-scroll .comm-blog { min-width: 300px; }
   .disciplines-grid { grid-template-columns: 1fr; }
 }
+
+/* ── SCROLL SNAP FIXES ──────────────────────────────────── */
+.comm-blog-scroll {
+  scroll-snap-type: x mandatory;
+  padding-right: calc(26px + 3.5rem); /* account for filmstrip */
+}
+.comm-blog-scroll .comm-blog {
+  scroll-snap-align: start;
+  min-width: min(420px, 85vw);
+}
+.comm-projects-scroll {
+  scroll-snap-type: x mandatory;
+  padding-right: calc(26px + 3.5rem);
+}
+.comm-projects-scroll .comm-project-card {
+  scroll-snap-align: start;
+  min-width: min(300px, 80vw);
+}

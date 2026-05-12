@@ -2,27 +2,29 @@ import ProjectDetail from "./ProjectDetail";
 
 const project = {
   name: "Krishi Drone",
-  eyebrow: "// 04 · UPES Incubator · 2024",
-  sub: "Agri-Tech Startup · Precision farming for rural India",
+  eyebrow: "// 04 · UPES Incubator · Agri-Tech · 2024",
+  sub: "Precision farming startup — drone-based crop monitoring for Indian smallholder farmers",
   year: "Aug 2024",
   stats: [
-    ["Stage", "UPES Incubator"],
-    ["Model", "Subscription"],
-    ["Market", "Rural India"],
-    ["GTM", "Farmer-first"],
-    ["Cash Flow", "Seasonal"],
+    ["Stage",      "UPES Incubator — accepted"],
+    ["Model",      "Subscription"],
+    ["Market",     "Indian smallholder farmers"],
+    ["GTM",        "Farmer-first, seasonal pricing"],
+    ["Prototype",  "UPES School of Engineering"],
+    ["Method",     "CBA + stakeholder interviews"],
   ],
-  heroImage: null,
+  heroImage: "/krishi-logo.png",
   body: [
-    "A precision agriculture drone startup that reached the UPES incubator. The concept: affordable drone-based crop monitoring for Indian smallholder farmers, on a subscription model built around seasonal demand and affordability.",
-    "The farmer I was designing for had two acres, unpredictable cash flow, and no appetite for tools that assumed they already spoke the language of software subscriptions. The question was never whether the technology was elegant — it was whether someone with nothing to spare could trust it before the monsoon came.",
-    "I led the business case — CBA on build vs. launch cost, farmer-first market positioning, and a go-to-market strategy built around real constraints. The UPES incubator accepted the case. The School of Engineering initiated the prototype.",
-    "When we explained the concept to the first farmer, he asked: 'Then why didn't anyone build this earlier?' That question was the whole answer.",
+    "Krishi Drone is a precision agriculture startup developed through the UPES incubator program. The product: affordable drone-based crop monitoring for Indian smallholder farmers, delivered on a subscription model built around seasonal cash flow rather than standard SaaS billing.",
+    "Led the business case development — covering market sizing for the smallholder segment, build vs. launch cost CBA, farmer-first go-to-market positioning, and a pricing model designed around the actual payment capacity of a 2-acre farmer.",
+    "Conducted stakeholder interviews with farmers in Uttarakhand to validate assumptions and identify the specific constraints — affordability, trust, seasonal timing — that determined product viability.",
+    "Collaborated with UPES School of Engineering on prototype feasibility and technical constraints. Business case accepted by the UPES incubator. Engineering prototype phase initiated.",
+    "The core finding: the technology was viable. The business model had to be rebuilt around the user's real constraints rather than standard agri-tech pricing assumptions.",
   ],
-  outcome: "Business case accepted into UPES incubator. Prototype phase initiated with School of Engineering.",
+  outcome: "Business case accepted into UPES incubator. Prototype phase initiated with School of Engineering. Farmer-first model validated through direct stakeholder interviews.",
   photos: [],
   reportUrl: "/reports/krishi-drone-business-case.pdf",
-  reportDesc: "Full business case — CBA, market sizing, farmer-first GTM strategy, and subscription model design.",
+  reportDesc: "Full business case including CBA, market sizing, farmer-first GTM strategy, seasonal cash flow model, and stakeholder interview findings.",
 };
 
 export default function KrishiPage() {

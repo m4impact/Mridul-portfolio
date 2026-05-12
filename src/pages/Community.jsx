@@ -78,21 +78,27 @@ const filters = ["all", "analytics", "strategy", "product", "community"];
 function BlogScroll({ blogs }) {
   const scrollRef = useRef(null);
   const isDragging = useRef(false);
+  const hasMoved = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
   const onMouseDown = (e) => {
     isDragging.current = true;
+    hasMoved.current = false;
     startX.current = e.pageX - scrollRef.current.offsetLeft;
     scrollLeft.current = scrollRef.current.scrollLeft;
     scrollRef.current.style.cursor = "grabbing";
   };
-  const onMouseUp = () => { isDragging.current = false; if (scrollRef.current) scrollRef.current.style.cursor = "grab"; };
+  const onMouseUp = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = "grab";
+  };
   const onMouseMove = (e) => {
     if (!isDragging.current) return;
-    e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    scrollRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.5;
+    const walk = x - startX.current;
+    if (Math.abs(walk) > 5) { hasMoved.current = true; e.preventDefault(); }
+    scrollRef.current.scrollLeft = scrollLeft.current - walk * 1.5;
   };
 
   return (
@@ -115,7 +121,7 @@ function BlogScroll({ blogs }) {
             key={b.to}
             to={b.to}
             className="comm-blog"
-            onClick={(e) => { if (isDragging.current) e.preventDefault(); }}
+            onClick={(e) => { if (hasMoved.current) e.preventDefault(); }}
           >
             <div className="comm-blog__img" style={{ background: b.imgBg }}>
               {b.img && <img src={b.img} alt={b.title} style={{ width: "100%", height: "100%", display: "block", ...b.imgStyle }} />}
@@ -132,24 +138,28 @@ function BlogScroll({ blogs }) {
     </div>
   );
 }
+
+function HorizontalScroll({ filtered }) {
   const scrollRef = useRef(null);
   const isDragging = useRef(false);
+  const hasMoved = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
   const onMouseDown = (e) => {
     isDragging.current = true;
+    hasMoved.current = false;
     startX.current = e.pageX - scrollRef.current.offsetLeft;
     scrollLeft.current = scrollRef.current.scrollLeft;
     scrollRef.current.style.cursor = "grabbing";
   };
-  const onMouseUp = () => { isDragging.current = false; scrollRef.current.style.cursor = "grab"; };
+  const onMouseUp = () => { isDragging.current = false; if (scrollRef.current) scrollRef.current.style.cursor = "grab"; };
   const onMouseMove = (e) => {
     if (!isDragging.current) return;
-    e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5;
-    scrollRef.current.scrollLeft = scrollLeft.current - walk;
+    const walk = x - startX.current;
+    if (Math.abs(walk) > 5) { hasMoved.current = true; e.preventDefault(); }
+    scrollRef.current.scrollLeft = scrollLeft.current - walk * 1.5;
   };
 
   return (
@@ -164,7 +174,7 @@ function BlogScroll({ blogs }) {
     >
       {filtered.map((p) => (
         <Link key={p.id} to={p.route} className="comm-project-card"
-          onClick={(e) => { if (isDragging.current) e.preventDefault(); }}>
+          onClick={(e) => { if (hasMoved.current) e.preventDefault(); }}>
           <span className="comm-project-card__category">{p.category}</span>
           <span className="comm-project-card__name">{p.name}</span>
           <p className="comm-project-card__brief">{p.brief}</p>
