@@ -102,6 +102,17 @@ function WorkFilter() {
   );
 }
 
+const timelines = {
+  "01": { date: "Jan 2026 → Ongoing",  type: "active" },
+  "02": { date: "Nov 2025",            type: "complete" },
+  "03": { date: "Nov 2025",            type: "complete" },
+  "04": { date: "Nov 2025",            type: "complete" },
+  "05": { date: "Aug – Dec 2024",      type: "complete" },
+  "06": { date: "Feb 2024 → Ongoing",  type: "active" },
+  "07": { date: "Jan – May 2026",      type: "complete" },
+  "08": { date: "Sep – Dec 2025",      type: "complete" },
+};
+
 export default function WorkPage() {
   useEffect(() => {
     document.title = "Work — Mridul Pathak";
@@ -166,7 +177,10 @@ export default function WorkPage() {
                 <div className="work-item__text">
                   <div className="work-item__meta">
                     <span className="work-item__num">{p.num}</span>
-                    <span className="work-item__year">{p.year}</span>
+                    <span className="work-item__timeline" data-type={timelines[p.num]?.type}>
+                      {timelines[p.num]?.type === "active" && <span className="work-item__timeline-dot" />}
+                      {timelines[p.num]?.date}
+                    </span>
                   </div>
                   <h2 className="work-item__name">{p.name}</h2>
                   <p className="work-item__hook">{hooks[p.num]}</p>

@@ -1957,3 +1957,26 @@ nav.scrolled .nav-links button {
     font-size: 0.38rem;
   }
 }
+
+/* work item timeline */
+.work-item__timeline {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(10,10,8,0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.work-item__timeline[data-type="active"] {
+  color: var(--red);
+}
+.work-item__timeline-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  animation: pulse 2.2s ease-in-out infinite;
+}
