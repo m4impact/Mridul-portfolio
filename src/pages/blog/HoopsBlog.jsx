@@ -30,7 +30,7 @@ export default function HoopsBlog() {
         {/* OPENING — full bleed champions photo */}
         <div className="blog-hero-img reveal" style={{ marginBottom: "3.5rem" }}>
           <img src="/hoops-champions.jpg" alt="Uttarakhand Hoops Fest — Champions, Kashipur 2024" />
-          <div className="blog-hero-caption">Champions receive ₹51,000 prize · Kashipur · March 2024</div>
+          <div className="blog-hero-caption">Champions receive ₹51,000 (1st place) · Total pool ₹1,00,000 · Kashipur · March 2024</div>
         </div>
 
         <div className="blog-body">
@@ -121,7 +121,7 @@ export default function HoopsBlog() {
             {[
               { n: "1,000+", sub: "People in the stands" },
               { n: "7", sub: "Sponsors secured" },
-              { n: "₹51,000", sub: "Prize pool" },
+              { n: "₹1,00,000", sub: "Total prize pool" },
             ].map(({ n, sub }) => (
               <div key={sub} style={{ background: "var(--paper)", padding: "2rem 1.6rem" }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3.5rem)", color: "var(--ink)", lineHeight: 1 }}>{n}</div>

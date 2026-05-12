@@ -9,7 +9,7 @@ const project = {
     ["Attendees",  "1,000+"],
     ["Sponsors",   "7"],
     ["Format",     "3-day event"],
-    ["Prize pool", "₹51,000"],
+    ["Prize pool", "₹1,00,000"],
     ["Coverage",   "2 news stories"],
     ["Status",     "2026 edition planned"],
   ],
