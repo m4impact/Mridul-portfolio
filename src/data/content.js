@@ -1,11 +1,11 @@
 export const projects = [
   {
-    num: "00", name: "ChargeBase — Decision Consultancy", sub: "Pricing · Breakeven · Resource allocation · 2023 → Ongoing",
+    num: "00", name: "ChargeBase — Decision Consultancy", sub: "Pricing · Breakeven · Resource allocation · Nov 2025 → Ongoing",
     tags: [["","Consultancy"],["","Decision Optimization"],["","Active"]],
-    year: "2023 →",
-    timeline: "2023 → Ongoing",
+    year: "Nov 2025 →",
+    timeline: "Nov 2025 → Ongoing",
     body: "A decision engine for early-stage businesses. Mathematical optimization and economic analysis applied to four high-stakes questions: what to charge, when to break even, how to allocate capital, and whether a market entry is viable at all.\n\nNot generic consulting. A recommendation backed by federal economic data, demand forecasting, and constraint-based optimization. Validated with a real client who saved $90K by choosing a phased $10K entry over a $100K full launch.",
-    outcome: "Crafteve Jewelry: $90K saved. Optimal price point $68. Breakeven Month 11. Launched successfully.",
+    outcome: "Crafteve India: $90K saved. Optimal price point $68. Breakeven Month 11. Launched successfully.",
     stats: [["Type","Consultancy"],["Focus","Pricing · Breakeven · Allocation"],["Stack","R · Python · SQL"],["Status","Active"]], link: null, hasPhotos: false,
   },
   {

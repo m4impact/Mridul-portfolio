@@ -10,7 +10,7 @@ export default function ChargeBasePage() {
   return (
     <div className="page-wrap">
       <div className="page-hero" style={{ borderBottom: "3px solid var(--ink)", paddingBottom: "4rem" }}>
-        <div className="page-hero__eyebrow">// Consultancy · Decision Optimization · 2023 → Ongoing</div>
+        <div className="page-hero__eyebrow">// Consultancy · Decision Optimization · Nov 2025 → Ongoing</div>
         <h1 className="page-hero__title" style={{ fontSize: "clamp(2.8rem,7vw,8rem)", lineHeight: 0.88 }}>ChargeBase.</h1>
         <p className="page-hero__sub" style={{ maxWidth: "520px" }}>
           A decision engine for early-stage businesses. Pricing, breakeven, resource allocation — solved with mathematical optimization and real economic data.
@@ -59,8 +59,8 @@ export default function ChargeBasePage() {
             ))}
           </div>
 
-          <h2 className="blog-h2 reveal">Real client — Crafteve Jewelry</h2>
-          <p className="reveal">A handmade jewelry brand considering U.S. market entry. The decision on the table: invest $100K for a full launch, or $10K for a phased entry?</p>
+          <h2 className="blog-h2 reveal">Real client — Crafteve India</h2>
+          <p className="reveal">A handmade wooden craft business in India considering U.S. market entry. The decision on the table: invest $100K for a full launch, or $10K for a phased entry?</p>
           <p className="reveal">The analysis covered the U.S. ethical fashion market — growth rate, competitor pricing, customer acquisition benchmarks, unit economics. It fed into a constraint-based optimization model with the client's budget as the hard limit and breakeven timeline as the objective.</p>
 
           <div className="reveal" style={{ margin: "2.5rem 0", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(10,10,8,0.08)", border: "1px solid rgba(10,10,8,0.08)" }}>

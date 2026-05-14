@@ -42,7 +42,7 @@ const detailRoutes = {
 
 const filteredProjects = [
   { id: "mat",          name: "MAT",                      category: "Product",            brief: "Free market intelligence platform. In development. First-time founders.", year: "2026", route: "/work/mat",          report: false },
-  { id: "chargebase",   name: "ChargeBase",                category: "Consultancy",        brief: "Decision engine for early-stage businesses. Pricing, breakeven, allocation — mathematical optimization on real economic data.", year: "2023", route: "/work/chargebase",    report: false },
+  { id: "chargebase",   name: "ChargeBase",                category: "Consultancy",        brief: "Decision engine for early-stage businesses. Pricing, breakeven, allocation — mathematical optimization on real economic data.", year: "2025", route: "/work/chargebase",    report: false },
   { id: "crafteve",     name: "Crafteve India",            category: "Strategy",           brief: "U.S. market entry. Phased pilot recommendation adopted. CBA + sensitivity.", year: "2025", route: "/work/crafteve",     report: true },
   { id: "nightingale",  name: "Nightingale Ice Cream",     category: "Analytics",          brief: "Demand forecasting. R Studio. ~12% overstock reduction from forecast.", year: "2025", route: "/work/nightingale",   report: false },
   { id: "pfg",          name: "PFG Group",                 category: "Operations",         brief: "Supply chain optimization. Freezer utilization 40% → 92%.", year: "2025", route: "/work/pfg",           report: true },
@@ -107,7 +107,7 @@ function WorkFilter() {
 }
 
 const timelines = {
-  "00": { date: "2023 → Ongoing",        type: "active" },
+  "00": { date: "Nov 2025 → Ongoing",     type: "active" },
   "01": { date: "Jan 2026 → Current",   type: "active" },
   "02": { date: "Oct – Dec 2025",       type: "complete" },
   "03": { date: "Oct – Dec 2025",       type: "complete" },
@@ -158,11 +158,8 @@ export default function WorkPage() {
                       }}
                     />
                   ) : p.num === "00" ? (
-                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.8rem", padding: "2rem" }}>
-                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.4rem)", color: "rgba(242,239,232,0.18)", lineHeight: 1, textAlign: "center" }}>What should I charge?</span>
-                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.4rem)", color: "var(--red)", lineHeight: 1, textAlign: "center" }}>When do I break even?</span>
-                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.4rem)", color: "rgba(242,239,232,0.18)", lineHeight: 1, textAlign: "center" }}>How do I allocate this?</span>
-                      <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(242,239,232,0.2)", marginTop: "0.3rem" }}>Decision optimization</span>
+                    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "var(--red)", lineHeight: 1, textAlign: "center" }}>decision engine</span>
                     </div>
                   ) : p.num === "06" ? (
                     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.6rem", padding: "2rem" }}>
