@@ -123,7 +123,7 @@ export default function HeroPage() {
       <div className="letterbox top" aria-hidden="true" />
 
       <div className="hero-content">
-        <div className="hero-eyebrow">// 001 &nbsp;·&nbsp; Richmond, VA &nbsp;·&nbsp; VCU MDA '26</div>
+        <div className="hero-eyebrow">// Founder · PM · Decision Analytics &nbsp;·&nbsp; Richmond, VA</div>
 
         <h1 className="hero-name">
           <span className="hero-name__first">Mridul</span>

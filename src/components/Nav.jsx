@@ -41,7 +41,7 @@ export default function Nav() {
       </div>
       <div className="nav-status" aria-label="Current status">
         <div className="status-dot" aria-hidden="true" />
-        Student · Building
+        Founder · Building
       </div>
     </nav>
   );

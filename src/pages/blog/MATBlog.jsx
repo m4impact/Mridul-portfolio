@@ -65,7 +65,7 @@ export default function MATBlog() {
           </div>
 
           <h2 className="blog-h2 reveal">What MAT actually is</h2>
-          <p className="reveal">A market intelligence platform. City-specific to start. Not trying to boil the ocean — starting where I am. MAT Virginia. Then MAT DC. MAT New York. MAT US. Eventually MAT India. MAT Global — a living index of businesses, markets, and the intelligence that connects them.</p>
+          <p className="reveal">A market intelligence platform. State-specific to start — not trying to boil the ocean. MAT Virginia first. Then MAT DC, MAT New York, MAT US. Eventually a living index of businesses, markets, and the intelligence that connects them, everywhere.</p>
           <p className="reveal">Each layer adds context. Each city adds real data from real markets. The goal isn't to be a search engine or a consultant or an AI chat. The goal is to be the thing that makes someone feel the transaction — the real movement of effort and money and decision — so they can make a better one themselves.</p>
 
           {/* Vision ladder */}
@@ -76,7 +76,7 @@ export default function MATBlog() {
                 { stage: "Now", label: "MAT Virginia", note: "City-specific market intelligence · Early build" },
                 { stage: "Next", label: "MAT DC · MAT NY", note: "Regional expansion · More markets, more data" },
                 { stage: "Then", label: "MAT US", note: "National market intelligence layer" },
-                { stage: "Vision", label: "MAT India · MAT Global", note: "Listing and business intel at scale · Everyone, everywhere" },
+                { stage: "Vision", label: "MAT US · MAT Global", note: "National and global market intelligence layer · Everyone, everywhere" },
               ].map(({ stage, label, note }, i) => (
                 <div key={stage} style={{ display: "flex", gap: "1.5rem", marginBottom: "1.8rem", alignItems: "flex-start" }}>
                   <div style={{ minWidth: "52px" }}>
@@ -104,6 +104,22 @@ export default function MATBlog() {
           <p className="reveal">If you're the person this is being built for — reach out. I want to know what you're trying to figure out.</p>
 
         </div>
+
+          {/* MAP teaser */}
+          <h2 className="blog-h2 reveal">Beyond the tool</h2>
+          <p className="reveal">MAT started as a question: what if founders had the intelligence they needed? Then I realised intelligence alone isn't enough. Founders need each other.</p>
+          <p className="reveal">The person trying to open a coffee shop in Richmond needs to talk to the person who just did it in Charlottesville. The teacher building an ed-tech solution needs to meet the engineer who's been thinking about the same problem from a different angle. The analyst with no outlet needs to find the founder who has the problem they can solve.</p>
+          <p className="reveal">Even if someone uses MAT and decides not to build their idea — they don't walk away empty-handed. They've learned how different businesses work. They've found their niche. They've met people building in adjacent spaces. The intelligence makes them informed. The community makes them connected.</p>
+
+          <div className="blog-pullquote reveal">
+            <blockquote>Even if they never launch, they're not alone in the room anymore.</blockquote>
+          </div>
+
+          <div className="reveal" style={{ margin: "2rem 0", padding: "1.6rem 2rem", background: "rgba(10,10,8,0.03)", border: "1px solid rgba(10,10,8,0.07)" }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.46rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(10,10,8,0.28)", marginBottom: "0.5rem" }}>// Coming</div>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "var(--ink)", lineHeight: 1, marginBottom: "0.4rem" }}>MAP — My Ambition Platform</div>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.5rem", color: "rgba(10,10,8,0.35)", lineHeight: 1.85 }}>The community layer. Built for people who are serious about something and want to find others who are serious about the same thing. Not networking. Not social media. A place where the table is round and the only currency is what you're actually working on.</div>
+          </div>
 
         <div className="blog-footer reveal">
           <Link to="/community" className="blog-back">← Back to Community</Link>

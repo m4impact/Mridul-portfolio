@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { projects } from "../data/content";
 
 const projectImages = {
+  "00": { src: null,                    bg: "#0A0A08", fit: "contain", pad: true  },
   "01": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true  },
   "02": { src: "/crafteve-logo.png",    bg: "#F5F0E8", fit: "contain", pad: true  },
   "03": { src: "/nightingale-logo.png", bg: "#F5EDE0", fit: "contain", pad: true  },
@@ -16,6 +17,7 @@ const projectImages = {
 };
 
 const hooks = {
+  "00": "Because every high-stakes decision deserves a real answer — not a range of possibilities.",
   "01": "Because the founders who need market clarity most are the ones who can least afford to pay for it.",
   "02": "Because the right answer to 'should I expand?' isn't yes or no — it's a framework that makes the decision survivable either way.",
   "03": "Because a forecast that helps a real business plan better is worth more than any grade.",
@@ -27,6 +29,7 @@ const hooks = {
 };
 
 const detailRoutes = {
+  "00": "/work/chargebase",
   "01": "/work/mat",
   "02": "/work/crafteve",
   "03": "/work/nightingale",
@@ -39,6 +42,7 @@ const detailRoutes = {
 
 const filteredProjects = [
   { id: "mat",          name: "MAT",                      category: "Product",            brief: "Free market intelligence platform. In development. First-time founders.", year: "2026", route: "/work/mat",          report: false },
+  { id: "chargebase",   name: "ChargeBase",                category: "Consultancy",        brief: "Decision engine for early-stage businesses. Pricing, breakeven, allocation — mathematical optimization on real economic data.", year: "2023", route: "/work/chargebase",    report: false },
   { id: "crafteve",     name: "Crafteve India",            category: "Strategy",           brief: "U.S. market entry. Phased pilot recommendation adopted. CBA + sensitivity.", year: "2025", route: "/work/crafteve",     report: true },
   { id: "nightingale",  name: "Nightingale Ice Cream",     category: "Analytics",          brief: "Demand forecasting. R Studio. ~12% overstock reduction from forecast.", year: "2025", route: "/work/nightingale",   report: false },
   { id: "pfg",          name: "PFG Group",                 category: "Operations",         brief: "Supply chain optimization. Freezer utilization 40% → 92%.", year: "2025", route: "/work/pfg",           report: true },
@@ -48,7 +52,7 @@ const filteredProjects = [
   { id: "globalintern", name: "GlobalIntern",              category: "Database",           brief: "19-table Oracle Apex schema. F-1 CPT/OPT authorization. 3NF, disjoint subtypes, 5 SQL queries.", year: "2026", route: "/work/globalintern", report: false },
 ];
 
-const filterCategories = ["All", "Analytics", "Strategy", "Product", "Operations", "Marketing Analytics", "Database"];
+const filterCategories = ["All", "Analytics", "Strategy", "Product", "Operations", "Marketing Analytics", "Database", "Consultancy"];
 
 function WorkFilter() {
   const [active, setActive] = useState("All");
@@ -103,6 +107,7 @@ function WorkFilter() {
 }
 
 const timelines = {
+  "00": { date: "2023 → Ongoing",        type: "active" },
   "01": { date: "Jan 2026 → Current",   type: "active" },
   "02": { date: "Oct – Dec 2025",       type: "complete" },
   "03": { date: "Oct – Dec 2025",       type: "complete" },
@@ -152,6 +157,13 @@ export default function WorkPage() {
                         transition: "transform 0.65s cubic-bezier(0.4,0,0.2,1), filter 0.4s ease",
                       }}
                     />
+                  ) : p.num === "00" ? (
+                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.8rem", padding: "2rem" }}>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.4rem)", color: "rgba(242,239,232,0.18)", lineHeight: 1, textAlign: "center" }}>What should I charge?</span>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.4rem)", color: "var(--red)", lineHeight: 1, textAlign: "center" }}>When do I break even?</span>
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem,3vw,2.4rem)", color: "rgba(242,239,232,0.18)", lineHeight: 1, textAlign: "center" }}>How do I allocate this?</span>
+                      <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.44rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(242,239,232,0.2)", marginTop: "0.3rem" }}>Decision optimization</span>
+                    </div>
                   ) : p.num === "06" ? (
                     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.6rem", padding: "2rem" }}>
                       <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem,5vw,5rem)", color: "var(--red)", lineHeight: 1 }}>19</span>
