@@ -5,8 +5,8 @@ import Footer from "../components/Footer";
 import { projects } from "../data/content";
 
 const projectImages = {
-  "00": { src: null,                    bg: "#0A0A08", fit: "contain", pad: true  },
-  "01": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true  },
+  "00": { src: "/mat-logo.png",         bg: "#0A0A08", fit: "contain", pad: true  },
+  "01": { src: null,                    bg: "#0A0A08", fit: "contain", pad: true  },
   "02": { src: "/crafteve-logo.png",    bg: "#F5F0E8", fit: "contain", pad: true  },
   "03": { src: "/nightingale-logo.png", bg: "#F5EDE0", fit: "contain", pad: true  },
   "04": { src: "/krishi-logo.png",      bg: "#F2EFE8", fit: "contain", pad: true  },
@@ -17,8 +17,8 @@ const projectImages = {
 };
 
 const hooks = {
-  "00": "Because every high-stakes decision deserves a real answer — not a range of possibilities.",
-  "01": "Because the founders who need market clarity most are the ones who can least afford to pay for it.",
+  "00": "Because the founders who need market clarity most are the ones who can least afford to pay for it.",
+  "01": "Because every high-stakes decision deserves a real answer — not a range of possibilities.",
   "02": "Because the right answer to 'should I expand?' isn't yes or no — it's a framework that makes the decision survivable either way.",
   "03": "Because a forecast that helps a real business plan better is worth more than any grade.",
   "04": "Because the farmer who needs the technology most is the one nobody designed it for.",
@@ -29,8 +29,8 @@ const hooks = {
 };
 
 const detailRoutes = {
-  "00": "/work/chargebase",
-  "01": "/work/mat",
+  "00": "/work/mat",
+  "01": "/work/chargebase",
   "02": "/work/crafteve",
   "03": "/work/nightingale",
   "04": "/work/krishi",
@@ -107,11 +107,11 @@ function WorkFilter() {
 }
 
 const timelines = {
-  "00": { date: "Nov 2025 → Ongoing",     type: "active" },
-  "01": { date: "Jan 2026 → Current",   type: "active" },
+  "00": { date: "Jan 2026 → Current",    type: "active" },
+  "01": { date: "Nov 2025 → Ongoing",   type: "active" },
   "02": { date: "Oct – Dec 2025",       type: "complete" },
   "03": { date: "Oct – Dec 2025",       type: "complete" },
-  "04": { date: "Oct – Dec 2025",       type: "complete" },
+  "04": { date: "2024",                 type: "complete" },
   "05": { date: "Jan 2024 → Current",   type: "active" },
   "06": { date: "Jan 2024 → Current",   type: "active" },
   "07": { date: "Jan – May 2026",       type: "complete" },
@@ -157,7 +157,7 @@ export default function WorkPage() {
                         transition: "transform 0.65s cubic-bezier(0.4,0,0.2,1), filter 0.4s ease",
                       }}
                     />
-                  ) : p.num === "00" ? (
+                  ) : p.num === "01" ? (
                     <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
                       <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "var(--red)", lineHeight: 1, textAlign: "center" }}>decision engine</span>
                     </div>

@@ -1,21 +1,21 @@
 export const projects = [
   {
-    num: "00", name: "ChargeBase — Decision Consultancy", sub: "Pricing · Breakeven · Resource allocation · Nov 2025 → Ongoing",
-    tags: [["","Consultancy"],["","Decision Optimization"],["","Active"]],
-    year: "Nov 2025 →",
-    timeline: "Nov 2025 → Ongoing",
-    body: "A decision engine for early-stage businesses. Mathematical optimization and economic analysis applied to four high-stakes questions: what to charge, when to break even, how to allocate capital, and whether a market entry is viable at all.\n\nNot generic consulting. A recommendation backed by federal economic data, demand forecasting, and constraint-based optimization. Validated with a real client who saved $90K by choosing a phased $10K entry over a $100K full launch.",
-    outcome: "Crafteve India: $90K saved. Optimal price point $68. Breakeven Month 11. Launched successfully.",
-    stats: [["Type","Consultancy"],["Focus","Pricing · Breakeven · Allocation"],["Stack","R · Python · SQL"],["Status","Active"]], link: null, hasPhotos: false,
-  },
-  {
-    num: "01", name: "MAT — My Ambition Tool", sub: "Market intelligence platform · In development",
+    num: "00", name: "MAT — My Ambition Tool", sub: "Market intelligence platform · In development",
     tags: [["live","In Progress"],["","Platform"],["","Free"]], year: "2026 →",
     timeline: "Jan 2026 → Ongoing",
     body: "A free market intelligence platform and tool engine built for people who can't afford to get the analysis wrong. First-time founders, small operators, people with real ideas and no access to the analytical infrastructure that de-risks them.\n\nNot a class project. Not affiliated with TMF. The thing I am building because the need is still there and nobody else is building it.",
     outcome: "Goal: Beta launch to first 50 users by graduation, December 2026.",
     note: "// Active build — not yet launched",
     stats: [["Status","In Development"],["Price","Free"],["Target","First-time Founders"],["Stage","Design + Early Build"]], link: null, hasPhotos: false,
+  },
+  {
+    num: "01", name: "ChargeBase — Decision Consultancy", sub: "Pricing · Breakeven · Resource allocation · Nov 2025 → Ongoing",
+    tags: [["","Consultancy"],["","Decision Optimization"],["","Active"]],
+    year: "Nov 2025 →",
+    timeline: "Nov 2025 → Ongoing",
+    body: "A decision engine for early-stage businesses. Mathematical optimization and economic analysis applied to four high-stakes questions: what to charge, when to break even, how to allocate capital, and whether a market entry is viable at all.\n\nNot generic consulting. A recommendation backed by federal economic data, demand forecasting, and constraint-based optimization. Validated with a real client who saved $90K by choosing a phased $10K entry over a $100K full launch.",
+    outcome: "Crafteve India: $90K saved. Optimal price point $68. Breakeven Month 11. Launched successfully.",
+    stats: [["Type","Consultancy"],["Focus","Pricing · Breakeven · Allocation"],["Stack","R · Python · SQL"],["Status","Active"]], link: null, hasPhotos: false,
   },
   {
     num: "02", name: "Crafteve India — U.S. Market Entry", sub: "Decision analytics consulting · VCU · Nov 2025",
@@ -36,7 +36,7 @@ export const projects = [
   {
     num: "04", name: "Krishi Drone — Agri-Tech Startup", sub: "UPES Incubator · Precision farming for rural India",
     tags: [["","Startup"],["","Incubator"],["","GTM Strategy"]], year: "Aug 2024",
-    timeline: "Nov 2025",
+    timeline: "2024",
     body: "Affordable drone-based crop monitoring for Indian smallholder farmers on a subscription model. The farmer I was designing for had two acres, unpredictable cash flow, and no appetite for enterprise software.\n\nI led the business case — CBA on build vs. launch cost, farmer-first market positioning, go-to-market built around seasonal demand and affordability.",
     outcome: "Business case accepted into UPES incubator. Prototype phase initiated with School of Engineering.",
     stats: [["Stage","UPES Incubator"],["Model","Subscription"],["Market","Rural India"],["Year","2024"]], link: null, hasPhotos: false,
