@@ -12,7 +12,7 @@ const bio = [
 
 const timeline = [
   { year: "2018–21",  place: "Delhi",        note: "BA Economics · University of Delhi · Markets are just people making decisions under uncertainty." },
-  { year: "2022–May 2025",  place: "Rudrapur",     note: "Marketing Intern · Industrial supply · Learned that data without context is just noise." },
+  { year: "2022–May 2025",  place: "Rudrapur",     note: "Operations Manager · Industrial supply · Learned that data without context is just noise." },
   { year: "2024–25",  place: "Dehradun",     note: "MBA · UPES · School of Business · Trident Titans · Krishi Drone · Budget Competition Runner-up." },
   { year: "Aug 2025–",place: "Richmond, VA", note: "MS Decision Analytics · VCU · Marketing Concentration · Graduating Dec 2026. PM at TMF." },
 ];
@@ -170,8 +170,6 @@ export default function AboutPage() {
             <div className="fact-item"><div className="fact-label">Activities</div><div className="fact-value" style={{ fontSize: ".82rem" }}>AMA <span className="sub">· Gamma Iota Sigma · MKTG-678</span></div></div>
             <div className="fact-item"><div className="fact-label">Building</div><div className="fact-value" style={{ fontSize: "1rem", color: "var(--red)" }}>MAT</div></div>
           </div>
-
-          <a className="resume-btn reveal d2" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
 
           {/* Subtle CTA — no explanation, just an open door */}
           <div className="about-open-door reveal" style={{ marginTop: "3rem" }}>

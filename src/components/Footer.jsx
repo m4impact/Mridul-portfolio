@@ -4,7 +4,6 @@ const links = [
   { href: "mailto:pathakm3@vcu.edu", label: "Email" },
   { href: "https://linkedin.com/in/mridul-pathak", label: "LinkedIn" },
   { href: "https://github.com/m4impact", label: "GitHub" },
-  { href: "/resume.pdf", label: "Résumé" },
 ];
 
 export default function Footer() {

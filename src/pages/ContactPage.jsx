@@ -12,7 +12,6 @@ const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || "YOUR_PU
 const contactLinks = [
   ["mailto:pathakm3@vcu.edu",           "Email",    "→ pathakm3@vcu.edu"],
   ["https://linkedin.com/in/mridul-pathak", "LinkedIn", "→ mridul-pathak"],
-  ["/resume.pdf",                        "Resume",   "→ Download PDF"],
   ["https://github.com/m4impact",        "GitHub",   "→ m4impact"],
 ];
 

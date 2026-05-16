@@ -37,7 +37,6 @@ export default function Nav() {
             {label}
           </Link>
         ))}
-        <a href="/resume.pdf" className="resume" target="_blank" rel="noopener noreferrer">Résumé ↓</a>
       </div>
       <div className="nav-status" aria-label="Current status">
         <div className="status-dot" aria-hidden="true" />
