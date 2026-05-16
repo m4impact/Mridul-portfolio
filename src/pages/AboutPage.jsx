@@ -12,7 +12,7 @@ const bio = [
 
 const timeline = [
   { year: "2018–21",  place: "Delhi",        note: "BA Economics · University of Delhi · Markets are just people making decisions under uncertainty." },
-  { year: "2022–23",  place: "Rudrapur",     note: "Marketing Intern · Industrial supply · Learned that data without context is just noise." },
+  { year: "2022–May 2025",  place: "Rudrapur",     note: "Marketing Intern · Industrial supply · Learned that data without context is just noise." },
   { year: "2024–25",  place: "Dehradun",     note: "MBA · UPES · School of Business · Trident Titans · Krishi Drone · Budget Competition Runner-up." },
   { year: "Aug 2025–",place: "Richmond, VA", note: "MS Decision Analytics · VCU · Marketing Concentration · Graduating Dec 2026. PM at TMF." },
 ];
